@@ -138,19 +138,8 @@ header {
   align-items: center;
   justify-content: center;
   padding: 64px 56px;
-  gap: 24px; /* réduit de 44px à 24px pour rapprocher slogan du logo */
+  gap: 44px;
   position: relative;
-  min-height: 100vh; /* prend toute la hauteur de l'écran */
-}
-
-.hero-image {
-  max-width: 420px; /* empêche le logo d'être trop gros */
-  width: 60%;
-  height: auto;
-}
-
-.hero-slogan {
-  text-align: center;
 }
 
 /* Halo derrière l'image */

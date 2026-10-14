@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 session_start();
-require_once  __DIR__ . '/../../BDD/bdd.php';
-require_once  __DIR__ . '/../security.php';
+require_once __DIR__ . '/../../BDD/bdd.php';
+require_once __DIR__ . '/../security.php';
 
 /* 1. Méthode HTTP, authentification, CSRF */
 exiger_methode_post();

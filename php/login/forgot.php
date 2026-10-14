@@ -1,10 +1,12 @@
 <?php
 declare(strict_types=1);
 session_start();
-require_once  __DIR__ . '/../../BDD/bdd.php';
-require_once  __DIR__ . '/../security.php';
+require_once __DIR__ . '/../../BDD/bdd.php';
+require_once __DIR__ . '/../security.php';
 
-/* 1. Validation de l'email */
+/* 1. Validation de l'email
+   Note : pas de exiger_methode_post() ici car cette page peut
+   aussi être rechargée. On valide simplement l'email reçu. */
 $email = valider_email($_POST['email'] ?? null);
 
 /* 2. Recherche de l'utilisateur par mail */
@@ -19,6 +21,8 @@ try {
 }
 
 if (!$qst_rep) {
+    // Email non trouvé → on redirige avec une erreur générique
+    // (volontairement floue pour ne pas révéler quels emails existent)
     header("Location: ../../html/page_login.php?error=email_invalide");
     exit;
 }
@@ -33,7 +37,7 @@ $questions = [
 ];
 
 if (!isset($questions[$qst])) {
-    // Question secrète inconnue 
+    // Question secrète inconnue (incohérence en BDD)
     header("Location: ../../html/page_login.php?error=email_invalide");
     exit;
 }
@@ -58,7 +62,7 @@ generer_csrf_token();
     <aside class="login-brand">
       <div class="brand-content">
         <a href="../../html/page_de_garde.php" class="brand-logo">
-          <img src="../../image/marque.png" alt="Fokus" style='width:65%' />
+          <img src="../../image/marque.png" alt="Fokus" />
         </a>
         <h1 class="brand-tagline">Récupération<br />de compte.</h1>
       </div>

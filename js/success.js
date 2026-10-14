@@ -21,7 +21,6 @@ const successMessages = {
   compte_supprime: "Votre compte a été supprimé avec succès.",
   photo_updated: "Photo de profil mise à jour avec succès.",
   photo_deleted: "Photo de profil supprimée.",
-  historique_vide: "Historique supprimée.",
 };
 
 const successParams = new URLSearchParams(window.location.search);

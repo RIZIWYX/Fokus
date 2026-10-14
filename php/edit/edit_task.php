@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 session_start();
-require_once  __DIR__ . '/../../BDD/bdd.php';
-require_once  __DIR__ . '/../security.php';
+require_once __DIR__ . '/../../BDD/bdd.php';
+require_once __DIR__ . '/../security.php';
 
 /* 1. Méthode HTTP, authentification, CSRF */
 exiger_methode_post();
@@ -12,7 +12,8 @@ verifier_csrf();
 /* 2. Validation de l'id */
 $id_tache = valider_id($_POST['task_id'] ?? null);
 
-/* 3. Récupération de l'ancienne tâche */
+/* 3. Récupération de l'ancienne tâche (pour fallback)
+   Si elle n'existe pas ou n'appartient pas à l'user → erreur. */
 try {
     $connexion = getConnexion();
     $stmt = $connexion->prepare("SELECT * FROM TACHES 
@@ -24,7 +25,7 @@ try {
         rediriger_erreur('champs_vides');
     }
 
-    /* 4. Récupération des nouvelles valeurs  */
+    /* 4. Récupération des nouvelles valeurs (avec fallback sur anciennes) */
     $titre_brut       = $_POST['titre']        ?? '';
     $statut_brut      = $_POST['statut']       ?? '';
     $description_brut = $_POST['description']  ?? null;

@@ -1,16 +1,14 @@
 <?php
 declare(strict_types=1);
 session_start();
-require_once  __DIR__ . '/../../BDD/bdd.php';
-require_once  __DIR__ . '/../security.php';
+require_once __DIR__ . '/../../BDD/bdd.php';
+require_once __DIR__ . '/../security.php';
 
-/* 1. Authentification + méthode POST + CSRF (action sensible) */
+/* 1. Authentification */
 $user = exiger_utilisateur_connecte();
-exiger_methode_post();
-verifier_csrf();
 
 /* 2. Validation du statut (liste fermée) */
-$statut = valider_dans_liste($_POST['statut'] ?? null, ['en_cours', 'a_faire', 'termine']);
+$statut = valider_dans_liste($_GET['statut'] ?? null, ['en_cours', 'a_faire', 'termine']);
 
 /* 3. Suppression */
 try {

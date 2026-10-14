@@ -30,7 +30,6 @@
 
 .danger-card {
   border-color: rgba(229, 57, 53, 0.25);
-  height: 470px;
 }
 .danger-card:hover {
   border-color: rgba(229, 57, 53, 0.5);
@@ -122,12 +121,8 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
-.params-stat.done .params-stat-value {
-  color: var(--status-done);
-}
-.params-stat.urgent .params-stat-value {
-  color: var(--status-urgent);
-}
+.params-stat.done .params-stat-value  { color: var(--status-done); }
+.params-stat.urgent .params-stat-value { color: var(--status-urgent); }
 
 /* ---- Zone dangereuse ---- */
 .danger-row {
@@ -151,9 +146,7 @@
   font-size: 0.78rem;
   color: var(--text-muted);
 }
-.mdp_modif {
-  padding-bottom: 17px;
-}
+
 /* ==========================================================
    RESPONSIVE
    ========================================================== */

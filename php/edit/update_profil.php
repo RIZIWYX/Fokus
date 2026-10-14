@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 session_start();
-require_once  __DIR__ . '/../../BDD/bdd.php';
-require_once  __DIR__ . '/../security.php';
+require_once __DIR__ . '/../../BDD/bdd.php';
+require_once __DIR__ . '/../security.php';
 
 /* 1. Méthode HTTP, authentification, CSRF */
 exiger_methode_post();
 $user = exiger_utilisateur_connecte();
 verifier_csrf();
 
-/* 2. Mot de passe actuel obligatoire  */
+/* 2. Mot de passe actuel obligatoire (modif sensible : nom, email…) */
 $password = (string)($_POST['curr_password'] ?? '');
 if ($password === '') {
     rediriger_erreur('mdp_oblg');
@@ -52,7 +52,10 @@ if ($nouveau_nb_tache_brut === '') {
     $nouveau_nb_tache = $n;
 }
 
-/* 5. Mise à jour */
+/* 5. Mise à jour
+   Les ALTER TABLE pour ajouter ON UPDATE CASCADE ont été
+   retirés d'ici — ils doivent être faits UNE SEULE FOIS dans
+   le script SQL de création de la base, pas à chaque update. */
 try {
     $sql = "UPDATE PERSONNE SET 
                 NOM_P     = :new_nom,

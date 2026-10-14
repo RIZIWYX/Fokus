@@ -16,6 +16,9 @@
 /* ---- Layout 4 colonnes ---- */
 .agenda-layout {
   display: grid;
+  /* minmax(0, ...) : interdit aux colonnes de s'élargir à cause
+     d'un contenu trop long (par défaut un grid-item refuse de
+     descendre sous la taille de son contenu) */
   grid-template-columns:
     minmax(0, 2.45fr)
     minmax(0, 1fr)
@@ -25,9 +28,7 @@
   align-items: start;
 }
 
-/* ══════════════════════════════════════════════════════════
-   COLONNE 1 : CALENDRIER
-   ══════════════════════════════════════════════════════════ */
+/* ══ COLONNE 1 : CALENDRIER ══ */
 .agenda-left {
   display: flex;
   flex-direction: column;
@@ -72,6 +73,7 @@
 .cal-nav-btn:hover {
   border-color: var(--gold-border);
   color: var(--gold);
+  /*! width: 96px; */
 }
 
 .agenda-days-header {
@@ -142,7 +144,7 @@
 }
 .agenda-task-count {
   font-size: 0.52rem;
-  background: green;
+  background: var(--gold);
   color: #000;
   border-radius: 8px;
   padding: 2px 4px;
@@ -151,11 +153,6 @@
 .agenda-day.today .agenda-task-count {
   background: rgba(0, 0, 0, 0.25);
   color: #fff;
-}
-.today.has-task {
-  background: var(--gold);
-  color: #000;
-  font-weight: 800;
 }
 
 .cal-legend {
@@ -178,23 +175,16 @@
   border-radius: 50%;
 }
 
-/* ══════════════════════════════════════════════════════════
-   COLONNES 2, 3, 4 — Style unifié (.agenda-side-card)
-   ══════════════════════════════════════════════════════════ */
-
-/* Positionnement des 3 colonnes */
-.agenda-day-col,
-.agenda-middle,
-.agenda-right {
+/* ══ COLONNE 2 : TÂCHES DU JOUR ══ */
+.agenda-day-col {
   position: sticky;
   top: 16px;
-  min-width: 0;
+  min-width: 0; /* IMPORTANT : permet à la colonne de rester dans sa largeur */
 }
 
-/* ── Carte commune aux 3 colonnes ── */
-.agenda-side-card {
+.agenda-day-detail {
   background: var(--bg-card);
-  border: 1px solid var(--border);
+  border: 1px solid var(--gold-border);
   border-radius: var(--radius-md);
   overflow: hidden;
   display: flex;
@@ -203,39 +193,16 @@
   min-width: 0;
 }
 
-/* ── Header commun ── */
-.agenda-side-header {
+.agenda-detail-title {
   padding: 9px 12px;
   border-bottom: 1px solid var(--border);
   font-size: 0.82rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: var(--gold);
   flex-shrink: 0;
 }
 
-/* Variante dorée (Tâches du jour) */
-.agenda-side-header.gold {
-  color: var(--gold);
-}
-.agenda-side-card:has(.agenda-side-header.gold) {
-  border-color: var(--gold-border);
-}
-
-/* Variante rouge (Deadlines proches) */
-.agenda-side-header.danger {
-  color: var(--status-urgent);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-size: 0.72rem;
-  background: rgba(229, 57, 53, 0.05);
-  border-bottom-color: rgba(229, 57, 53, 0.2);
-}
-.agenda-side-card:has(.agenda-side-header.danger) {
-  border-color: rgba(229, 57, 53, 0.3);
-}
-
-/* ── Liste scrollable commune ── */
-.agenda-side-list {
+.agenda-detail-list {
   padding: 8px;
   display: flex;
   flex-direction: column;
@@ -246,9 +213,61 @@
   min-width: 0;
 }
 
-/* ══════════════════════════════════════════════════════════
-   Items de tâche (commun aux 3 colonnes)
-   ══════════════════════════════════════════════════════════ */
+/* ══ COLONNE 3 : DEADLINES PROCHES ══ */
+.agenda-middle {
+  position: sticky;
+  top: 16px;
+  min-width: 0;
+}
+
+.agenda-alerts {
+  background: var(--bg-card);
+  border: 1px solid rgba(229, 57, 53, 0.3);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 690px;
+  min-width: 0;
+}
+.alert-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--status-urgent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 9px 12px;
+  border-bottom: 1px solid rgba(229, 57, 53, 0.2);
+  background: rgba(229, 57, 53, 0.05);
+  flex-shrink: 0;
+}
+.agenda-alerts-list {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+}
+
+/* ══ COLONNE 4 : TOUTES LES DEADLINES ══ */
+.agenda-right {
+  position: sticky;
+  top: 16px;
+  min-width: 0;
+}
+
+.agenda-all-tasks {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  max-height: 690px;
+  overflow-y: auto;
+  min-width: 0;
+}
 
 .agenda-month-label {
   font-size: 0.65rem;
@@ -265,6 +284,7 @@
   margin-top: 0;
 }
 
+/* ══ Item tâche commun ══ */
 .agenda-task-item {
   display: flex;
   align-items: center;
@@ -277,6 +297,7 @@
   transition: var(--transition);
   margin-bottom: 3px;
   min-width: 0;
+  /* L'item ne dépasse JAMAIS son conteneur, peu importe le texte */
   width: 100%;
   box-sizing: border-box;
   overflow: hidden;
@@ -296,7 +317,7 @@
   align-items: center;
   gap: 7px;
   flex: 1;
-  min-width: 0;
+  min-width: 0; /* IMPORTANT : autorise le flex-item à rétrécir */
 }
 .agenda-task-dot {
   width: 6px;
@@ -305,6 +326,7 @@
   flex-shrink: 0;
 }
 
+/* Le conteneur du nom + catégorie : ne dépasse pas */
 .agenda-task-left > div {
   min-width: 0;
   flex: 1;
@@ -332,7 +354,7 @@
   flex-direction: column;
   align-items: flex-end;
   gap: 2px;
-  flex-shrink: 0;
+  flex-shrink: 0; /* la partie droite (statut + date) ne se rétrécit pas */
 }
 .agenda-task-statut {
   font-size: 0.62rem;
@@ -351,9 +373,7 @@
   color: var(--status-urgent);
 }
 
-/* ══════════════════════════════════════════════════════════
-   RESPONSIVE
-   ══════════════════════════════════════════════════════════ */
+/* ══ RESPONSIVE ══ */
 @media (max-width: 1400px) {
   .agenda-layout {
     grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
@@ -362,7 +382,7 @@
     grid-column: 1 / -1;
     position: static;
   }
-  .agenda-right .agenda-side-card {
+  .agenda-all-tasks {
     max-height: 400px;
   }
 }

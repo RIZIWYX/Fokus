@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 session_start();
-require_once  __DIR__ . '/../../BDD/bdd.php';
-require_once  __DIR__ . '/../security.php';
+require_once __DIR__ . '/../../BDD/bdd.php';
+require_once __DIR__ . '/../security.php';
 
 /* 1. Méthode HTTP */
 exiger_methode_post();
@@ -17,11 +17,11 @@ $reponse          = valider_texte_obligatoire($_POST['reponse']            ?? nu
 $terms = isset($_POST['terms']) ? 1 : 0;
 
 if($terms == 0){
-    rediriger_erreur('cgu', '../../html/page_login.php');
+    rediriger_erreur('cgu', '/html/page_login.php');
 }
 // Username : longueur minimale 3 (max déjà vérifié par valider_texte_obligatoire)
 if (mb_strlen($username) < 3) {
-    rediriger_erreur('username_invalide', '../../html/page_login.php');
+    rediriger_erreur('username_invalide', '/html/page_login.php');
 }
 
 // Confirmation du mot de passe
@@ -30,7 +30,7 @@ exiger_mots_de_passe_identiques($password, $confirm);
 
 // Question secrète : doit être dans la liste valide
 if (!in_array($question_secrete, [1, 2, 3, 4], true)) {
-    rediriger_erreur('question_invalide', '../../html/page_login.php');
+    rediriger_erreur('question_invalide', '/html/page_login.php');
 }
 
 /* 3. Vérifications d'unicité + insertion */
@@ -41,14 +41,14 @@ try {
     $stmt = $connexion->prepare("SELECT 1 FROM PERSONNE WHERE NOM_P = :nom");
     $stmt->execute([':nom' => $username]);
     if ($stmt->fetchColumn()) {
-        rediriger_erreur('username_pris', '../../html/page_login.php');
+        rediriger_erreur('username_pris', '/html/page_login.php');
     }
 
     // Email déjà pris ?
     $stmt = $connexion->prepare("SELECT 1 FROM PERSONNE WHERE MAIL = :mail");
     $stmt->execute([':mail' => $email]);
     if ($stmt->fetchColumn()) {
-        rediriger_erreur('email_pris', '../../html/page_login.php');
+        rediriger_erreur('email_pris', '/html/page_login.php');
     }
 
     // Insertion
@@ -65,21 +65,14 @@ try {
         ':question'    => $question_secrete,
         ':reponse'     => $reponse,
     ]);
-    $sql = "INSERT INTO PHOTO_PROFIL (UTILISATEUR, PHOTO, DATE_UPLOAD) 
-            VALUES (:nom, :pdp,:curr_date)";
-    $stmt = $connexion->prepare($sql);
-    $stmt->execute([
-        ':nom'         => $username,
-        ':pdp'         => NULL,
-        ':curr_date'   => date('Y-m-d'),
-    ]);
 
     $connexion = null;
 } catch (PDOException $e) {
     gerer_erreur_pdo($e, 'register');
 }
 
-/* 4. Connexion automatique après inscription */
+/* 4. Connexion automatique après inscription
+   On régénère l'ID de session (anti session fixation) */
 session_regenerate_id(true);
 $_SESSION['user'] = $username;
 generer_csrf_token();

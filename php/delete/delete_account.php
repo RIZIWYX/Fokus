@@ -1,16 +1,14 @@
 <?php
 declare(strict_types=1);
 session_start();
-require_once  __DIR__ . '/../../BDD/bdd.php';
-require_once  __DIR__ . '/../security.php';
+require_once __DIR__ . '/../../BDD/bdd.php';
+require_once __DIR__ . '/../security.php';
 
 /* 1. Méthode HTTP, authentification, CSRF */
 $user = exiger_utilisateur_connecte();
-exiger_methode_post();
-verifier_csrf();
 
 
-/* 2. Suppression en cascade (ordre important à cause des FK) */
+/* 3. Suppression en cascade (ordre important à cause des FK) */
 try {
     $connexion = getConnexion();
 
@@ -24,11 +22,11 @@ try {
     gerer_erreur_pdo($e, 'delete_account');
 }
 
-/* 3. Destruction de la session */
+/* 4. Destruction de la session */
 session_unset();
 session_destroy();
 
-/* 4. Redirection vers la page de garde (URL fixe, hors session) */
-header("Location: ../../html/page_de_garde.php?success=compte_supprime");
+/* 5. Redirection vers la page de garde (URL fixe, hors session) */
+header("Location: /html/page_de_garde.php?success=compte_supprime");
 exit;
 ?>

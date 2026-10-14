@@ -157,7 +157,7 @@ textarea {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 20px;
+  padding: 9px 20px;
   background: transparent;
   color: var(--status-urgent);
   font-weight: 600;
@@ -184,7 +184,6 @@ textarea {
   padding: 20px;
   transition: var(--transition);
 }
-
 .card:hover {
   border-color: var(--gold-border);
   box-shadow: var(--shadow-gold);
@@ -762,8 +761,33 @@ textarea.form-control {
 }
 
 /* ==========================================================
-   NOTIFICATION
+   RESPONSIVE
    ========================================================== */
+@media (max-width: 900px) {
+  .app-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: var(--header-height) 1fr;
+    grid-template-areas: "header" "main";
+  }
+  .app-sidebar {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    height: 100%;
+    width: var(--sidebar-width);
+    z-index: 500;
+    transition: left 0.3s ease;
+  }
+  .app-sidebar.open {
+    left: 0;
+  }
+  .menu-toggle {
+    display: flex !important;
+  }
+  .app-main {
+    padding: 18px;
+  }
+}
 
 .sidebar-backdrop {
   display: none;
@@ -794,6 +818,8 @@ textarea.form-control {
   overflow: hidden;
 }
 
+/* Le cercle de l'icône : taille fixe, ne se déforme JAMAIS.
+   flex: 0 0 22px = il garde 22px de large quoi qu'il arrive. */
 .notif-icon {
   flex: 0 0 22px;
   width: 22px;
@@ -807,6 +833,7 @@ textarea.form-control {
   font-size: 0.7rem;
 }
 
+/* Le conteneur texte prend le reste de la place et peut rétrécir */
 .notif-item > div:not(.notif-icon) {
   flex: 1;
   min-width: 0;
@@ -902,6 +929,7 @@ textarea.form-control {
   outline: none;
   border-color: var(--gold);
 }
+/* mise à jour/derniere modif */
 .update-since {
   font-size: 0.78rem;
   color: var(--gold);
@@ -916,7 +944,7 @@ textarea.form-control {
 
 /* ---- Bouton urgent : 2 états distincts ---- */
 
-/* État NON urgent  */
+/* État NON urgent : bouton outline grisé, flamme désaturée */
 .task-action-btn.urgent-btn {
   width: 28px;
   height: 28px;
@@ -935,7 +963,8 @@ textarea.form-control {
   color: var(--status-urgent);
 }
 
-/* État URGENT */
+/* État URGENT : bouton plein rouge, flamme vive, légère pulsation
+   (width/height/display/etc. hérités de .urgent-btn ci-dessus) */
 .task-action-btn.urgent-btn.is-urgent {
   filter: none;
   opacity: 1;
@@ -959,17 +988,18 @@ textarea.form-control {
   }
 }
 
-/* Le bouton urgent reste TOUJOURS visible  */
+/* Le bouton urgent reste TOUJOURS visible (même sans hover sur la task-item) */
 .task-item .task-item-actions .urgent-btn {
-  opacity: inherit;
+  opacity: inherit; /* on respecte les opacités définies au-dessus */
 }
 .task-item:not(:hover) .task-item-actions .urgent-btn {
   opacity: 0.45;
 }
 .task-item:not(:hover) .task-item-actions .urgent-btn.is-urgent {
-  opacity: 1;
+  opacity: 1; /* l'urgent reste vif même sans hover */
 }
 
+/* ---- Tâche elle-même quand elle est urgent : bordure rouge + accent ---- */
 .task-item.urgent {
   border-left: 3px solid var(--status-urgent);
   background: linear-gradient(
@@ -987,6 +1017,7 @@ textarea.form-control {
   );
 }
 
+/* ---- Badge "Urgent" dans la meta de la tâche ---- */
 .badge-urgent {
   background: var(--status-urgent);
   color: #fff;
@@ -1074,65 +1105,29 @@ textarea.form-control {
   text-decoration: underline;
 }
 
-/* ==========================================================
-   RESPONSIVE
-   ========================================================== */
-@media (max-width: 900px) {
-  .app-layout {
-    grid-template-columns: 1fr;
-    grid-template-rows: var(--header-height) 1fr;
-    grid-template-areas: "header" "main";
-  }
-  .app-sidebar {
-    position: fixed;
-    left: -100%;
-    top: 0;
-    height: 100%;
-    width: var(--sidebar-width);
-    z-index: 500;
-    transition: left 0.3s ease;
-  }
-  .app-sidebar.open {
-    left: 0;
-  }
-  .menu-toggle {
-    display: flex !important;
-  }
-  .app-main {
-    padding: 18px;
-  }
+/* Indicateur de force du mot de passe */
+.strength-bar {
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  margin-top: 8px;
+  overflow: hidden;
 }
-
-/* ==========================================================
-   État vide — composant réutilisable (global.css)
-   ========================================================== */
-.empty-state {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  padding: 80px 20px;
-  text-align: center;
+.strength-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 2px;
+  transition:
+    width 0.3s ease,
+    background 0.3s ease;
+}
+.strength-label {
+  font-size: 0.73rem;
   color: var(--text-muted);
-  min-height: 60vh;
+  margin-top: 4px;
+  display: block;
 }
 
-.empty-state-icon {
-  font-size: 3rem;
-  opacity: 0.5;
-}
-
-.empty-state h2 {
-  color: var(--gold);
-  font-size: 1.1rem;
-  font-weight: 700;
-}
-
-.empty-state p {
-  font-size: 0.85rem;
-  max-width: 320px;
-}
 /* ==========================================================
    AVATAR / PHOTO DE PROFIL
    ========================================================== */

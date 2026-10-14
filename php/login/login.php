@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 session_start();
-require_once  __DIR__ . '/../../BDD/bdd.php';
-require_once  __DIR__ . '/../security.php';
+require_once __DIR__ . '/../../BDD/bdd.php';
+require_once __DIR__ . '/../security.php';
 
 /* 1. Méthode HTTP */
 exiger_methode_post();
@@ -24,6 +24,7 @@ try {
 
     if (!$user || !verifier_mot_de_passe($password, $user['PASSEWORD'])) {
         // Même message pour "email inconnu" et "mauvais mdp"
+        // → empêche l'énumération de comptes
         header("Location: ../../html/page_login.php?error=identifiants_incorrects");
         exit;
     }
@@ -40,7 +41,8 @@ try {
     gerer_erreur_pdo($e, 'login');
 }
 
-/* 5. Session sécurisée : on régénère l'ID après login*/
+/* 5. Session sécurisée : on régénère l'ID après login
+   pour prévenir les attaques de session fixation */
 session_regenerate_id(true);
 $_SESSION['user'] = $user['NOM_P'];
 
