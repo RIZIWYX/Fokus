@@ -348,12 +348,15 @@
 
     <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
     <script>
-    initCalendar({
-      datesTaches: <?= json_encode($dates_taches) ?>,
-      titleId: 'cal-title',
-      gridId:  'calendar-days',
-      prevId:  'cal-prev',
-      nextId:  'cal-next',
+    // calendar.js est chargé en defer : on attend qu'il soit exécuté
+    document.addEventListener('DOMContentLoaded', () => {
+      initCalendar({
+        datesTaches: <?= json_encode($dates_taches) ?>,
+        titleId: 'cal-title',
+        gridId:  'calendar-days',
+        prevId:  'cal-prev',
+        nextId:  'cal-next',
+      });
     });
     </script>
     <?php include __DIR__ . '/../php/modals.php'; ?>
