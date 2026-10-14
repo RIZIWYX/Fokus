@@ -71,7 +71,7 @@
           <div class="form-group">
             <label for="reg-username">Nom d'utilisateur</label>
             <input type="text" id="reg-username" name="username" class="form-control"
-              placeholder="votre_pseudo" required minlength="3" maxlength="30" autocomplete="username" />
+              placeholder="votre_pseudo" required minlength="3" maxlength="20" autocomplete="username" />
           </div>
           <div class="form-group">
             <label for="reg-email">Adresse e-mail</label>
@@ -108,7 +108,7 @@
           <div class="form-group">
             <label for="reponse">Réponse à la question</label>
             <input type="text" id="reponse" name="reponse" class="form-control"
-              placeholder="Réponse à la question secrète" required />
+              placeholder="Réponse à la question secrète" required maxlength="30" />
           </div>
           <div class="form-check">
             <input type="checkbox" id="terms" name="terms"  value="1" required />
@@ -119,6 +119,17 @@
           <button type="submit" class="btn-gold btn-full">Créer mon compte</button>
         </form>
       </main>
+    </div>
+
+    <!-- Modal d'erreur (utilisée par errors.js) -->
+    <div class="modal-overlay" id="modal-error">
+      <div class="modal" style="max-width: 380px; text-align: center;">
+        <div class="modal-header" style="justify-content: center; border: none;">
+          <span style="font-size: 2rem;">⚠️</span>
+        </div>
+        <p id="modal-error-msg" style="color: var(--text-secondary); margin-bottom: 24px; font-size: 0.95rem;"></p>
+        <button type="button" class="btn-gold btn-full" onclick="closeModal('modal-error')">Fermer</button>
+      </div>
     </div>
 
     <script src="/js/main.js"></script>
