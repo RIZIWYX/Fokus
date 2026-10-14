@@ -44,30 +44,20 @@ function ouvrirEditTache(
 }
 
 function toggleUrgent(btn, id) {
-  // getCsrfToken() est définie dans delete.js, chargé avant edit.js sur
-  // toutes les pages concernées. Repli défensif si jamais absente.
-  const token =
-    typeof getCsrfToken === "function"
-      ? getCsrfToken()
-      : (document.querySelector('input[name="csrf_token"]') || {}).value || "";
-
-  const body = new URLSearchParams();
-  body.set("csrf_token", token);
-  body.set("id", id);
-
-  fetch("../php/edit/urgent.php", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: body.toString(),
-  }).then((response) => {
+  fetch("../php/edit/urgent.php?id=" + id).then((response) => {
     if (response.ok) {
       location.reload();
     }
   });
 }
+/* ==========================================================
+   À AJOUTER dans main.js
+   (ou dans un fichier view.js séparé chargé dans les pages)
+   ========================================================== */
 
 /* ----------------------------------------------------------
    MODAL VUE DÉTAIL — tâche
+   Appelé par onclick="ouvrirViewTache(this)" sur .task-item
 ---------------------------------------------------------- */
 function ouvrirViewTache(el) {
   const d = el.dataset;

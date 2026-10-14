@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 session_start();
-require_once  __DIR__ . '/../../BDD/bdd.php';
-require_once  __DIR__ . '/../security.php';
+require_once __DIR__ . '/../../BDD/bdd.php';
+require_once __DIR__ . '/../security.php';
 
 /* 1. Méthode HTTP, authentification, CSRF */
 exiger_methode_post();
@@ -15,7 +15,10 @@ $nom         = valider_texte_obligatoire($_POST['nom']        ?? null, 20);
 $couleur     = valider_couleur($_POST['color']                ?? null);
 $description = valider_texte_facultatif($_POST['description'] ?? null, 200);
 
-/* 3. Mise à jour */
+/* 3. Mise à jour
+   On filtre sur ID_C ET UTILISATEUR_C → si la catégorie
+   n'appartient pas à l'utilisateur, l'UPDATE ne touche rien.
+   Pas besoin de SELECT préalable. */
 try {
     $connexion = getConnexion();
     $sql = "UPDATE CATEGORIE SET 

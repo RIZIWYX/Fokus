@@ -8,7 +8,7 @@ $notif_delete   = $_SESSION['notif_delete']   ?? null;
 unset($_SESSION['notif_password'], $_SESSION['notif_delete']);
 
 // Génération du token CSRF (une seule fois par session)
-require_once  __DIR__ . '/security.php';
+require_once __DIR__ . '/security.php';
 $csrf = generer_csrf_token();
 ?>
 
@@ -274,7 +274,7 @@ $csrf = generer_csrf_token();
       </div>
       <div class="form-group">
         <label for="edit-nb-tache">Nombre de tâches par page</label>
-        <input type="text" id="edit-nb-tache" name="nb_tache" class="form-control" placeholder="Laisser vide pour ne pas changer" />
+        <input type="text" id="edit-nb-tache" name="nb_tache" class="form-control" placeholder="Laisser vide pour ne pas changer" min="1" max="20" />
       </div>
       <div class="form-group">
         <label for="edit-curr-password-profil">Mot de passe actuel <span style="color:var(--status-urgent)">*</span></label>
@@ -318,7 +318,7 @@ $csrf = generer_csrf_token();
       <?php endif; ?>
 
       <!-- Bouton modifier -->
-      <form action="../php/add/upload_photo.php"
+      <form action="/php/add/upload_photo.php"
             method="POST"
             enctype="multipart/form-data"
             style="width:100%">
@@ -337,7 +337,7 @@ $csrf = generer_csrf_token();
 
       <!-- Bouton supprimer (uniquement si photo existe) -->
       <?php if ($photo_profil): ?>
-        <form action="../php/delete/delete_photo.php"
+        <form action="/php/delete/delete_photo.php"
               method="POST"
               style="width:100%">
           <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(generer_csrf_token()) ?>" />
@@ -371,11 +371,15 @@ $csrf = generer_csrf_token();
         </div>
       </div>
       <div class="form-group">
-        <label for="edit-password">Nouveau mot de passe</label>
+        <label for="reg-password">Nouveau mot de passe</label>
         <div class="password-wrapper">
-          <input type="password" id="edit-password" name="new_password" class="form-control" placeholder="Nouveau mot de passe" autocomplete="new-password" required />
+          <input type="password" id="reg-password" name="new_password" class="form-control" placeholder="Nouveau mot de passe" autocomplete="new-password" required />
           <button type="button" class="toggle-password" aria-label="Afficher">👁</button>
         </div>
+        <div class="strength-bar">
+          <div class="strength-fill" id="strength-fill"></div>
+        </div>
+        <span class="strength-label" id="strength-label"></span>
       </div>
       <div class="form-group">
         <label for="confirm-password-mdp">Confirmer le mot de passe</label>
@@ -581,3 +585,59 @@ $csrf = generer_csrf_token();
 </div>
 
 
+<!-- ══════════════════════════════
+   MODAL — AJOUT DE PHOTO DE PROFIL
+══════════════════════════════ -->
+
+<div class="modal-overlay" id="modal-photo-profil" role="dialog" aria-modal="true" aria-labelledby="mpp-title">
+  <div class="modal" style="max-width: 380px; text-align: center;">
+    <div class="modal-header">
+      <h2 class="modal-title" id="mpp-title">📷 Photo de profil</h2>
+      <button class="modal-close" onclick="closeModal('modal-photo-profil')" aria-label="Fermer">×</button>
+    </div>
+
+    <div style="padding: 24px 20px;">
+
+      <form action="/php/edit/upload_photo.php"
+            method="POST"
+            enctype="multipart/form-data">
+
+        <input type="hidden" name="csrf_token"
+               value="<?= htmlspecialchars(generer_csrf_token()) ?>" />
+
+        <label for="photo-input" class="avatar-upload-label" style="display:inline-block; margin-bottom: 20px;">
+          <?php if ($photo_profil): ?>
+            <img src="<?= htmlspecialchars($photo_profil) ?>"
+                 alt="Photo de profil"
+                 class="avatar-img avatar-img-lg" />
+          <?php else: ?>
+            <div class="avatar-placeholder avatar-placeholder-lg">
+              <?= htmlspecialchars($first_letter) ?>
+            </div>
+          <?php endif; ?>
+          <span class="avatar-upload-overlay">📷 Changer</span>
+        </label>
+
+        <input type="file"
+               id="photo-input"
+               name="photo"
+               accept="image/jpeg,image/png,image/webp,image/gif"
+               style="display:none"
+               onchange="this.form.submit()" />
+
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom: 20px;">
+          Formats acceptés : JPG, PNG, WEBP, GIF — max 2 Mo
+        </p>
+
+        <div class="modal-footer" style="justify-content: center;">
+          <button type="button" class="btn-outline" onclick="closeModal('modal-photo-profil')">Fermer</button>
+          <button type="button" class="btn-gold" onclick="document.getElementById('photo-input').click()">
+            📷 Choisir une photo
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>

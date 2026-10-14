@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . '/../../BDD/bdd.php';
-require_once __DIR__ . '/../security.php';
+require_once __DIR__ . '/../../php/security.php';
 
 /* ── Authentification ── */
 $username = exiger_utilisateur_connecte();
@@ -14,10 +14,10 @@ try {
     $req->execute([':nom' => $username]);
     $array = $req->fetch();
 
-    $mail               = $array['MAIL'];
-    $signin_date        = $array['SIGNIN_DATE'];
-    $last_cnx           = $array['LAST_CONNEXION'];
-    $role_p             = $array['ROLE_P'];
+    $mail               = $array['MAIL']           ?? '';
+    $signin_date        = $array['SIGNIN_DATE']    ?? '';
+    $last_cnx           = $array['LAST_CONNEXION'] ?? '';
+    $role_p             = $array['ROLE_P']         ?? '';
     $nb_taches_par_page = (int)($array['NB_TACHES'] ?? 5);
     $first_letter       = strtoupper($username[0]);
 
@@ -25,18 +25,9 @@ try {
     $req = $connexion->prepare("SELECT PHOTO FROM PHOTO_PROFIL WHERE UTILISATEUR = :nom");
     $req->execute([':nom' => $username]);
     $row = $req->fetch();
-    $photo_profil = ($row && is_string($row['PHOTO'])) ? $row['PHOTO'] : null;
+    $photo_profil = ($row && is_string($row['PHOTO'] ?? null)) ? $row['PHOTO'] : null;
 
-    /* ── Compteurs ── */
-    $req = $connexion->prepare("SELECT COUNT(*) FROM TACHES WHERE UTILISATEUR_T = :nom");
-    $req->execute([':nom' => $username]);
-    $nb_taches = $req->fetchColumn();
-
-    $req = $connexion->prepare("SELECT COUNT(*) FROM CATEGORIE WHERE UTILISATEUR_C = :nom");
-    $req->execute([':nom' => $username]);
-    $nb_categories = $req->fetchColumn();
-
-    /* ── Toutes les tâches ── */
+    /* ── Toutes les tâches (compteurs dérivés après) ── */
     $req = $connexion->prepare(
         "SELECT t.*, c.NOM_C as NOM_CAT, c.COLOR_C as COLOR_CAT
          FROM TACHES t
@@ -46,12 +37,17 @@ try {
     );
     $req->execute([':nom' => $username]);
     $toutes_taches = $req->fetchAll();
+    $nb_taches = count($toutes_taches);
+
+    $req = $connexion->prepare("SELECT COUNT(*) FROM CATEGORIE WHERE UTILISATEUR_C = :nom");
+    $req->execute([':nom' => $username]);
+    $nb_categories = $req->fetchColumn();
 
     /* ── Données agenda ── */
     $req = $connexion->prepare(
         "SELECT NOM_T, STATUT, LIMIT_DATE FROM TACHES
          WHERE UTILISATEUR_T = :u
-         AND LIMIT_DATE BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 3 DAY)
+         AND LIMIT_DATE BETWEEN CURRENT_DATE AND CURRENT_DATE + INTERVAL '3 days'
          AND STATUT != 'termine'
          ORDER BY LIMIT_DATE ASC"
     );
@@ -68,7 +64,7 @@ try {
     $toutes_taches_agenda = $req->fetchAll();
 
 } catch (PDOException $e) {
-    gerer_erreur_pdo($e, 'data_user');
+    gerer_erreur_pdo($e, 'data_user.php');
 }
 
 $connexion = null;

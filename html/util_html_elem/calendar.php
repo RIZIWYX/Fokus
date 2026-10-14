@@ -1,4 +1,10 @@
 <?php
+/* ==========================================================
+   FOKUS — calendar.php
+   Variables attendues avant l'include :
+     $dates_taches  — array de strings "Y-m-d"
+     $cal_mode      — 'dashboard' (défaut) ou 'agenda'
+   ========================================================== */
 
 $mode = $cal_mode ?? 'dashboard';
 $agenda = $mode === 'agenda';
@@ -29,7 +35,7 @@ $agenda = $mode === 'agenda';
       <div class="cal-legend-dot" style="background:var(--gold)"></div> Aujourd'hui
     </div>
     <div class="cal-legend-item">
-      <div class="cal-legend-dot" style="background:green;opacity:0.5"></div> Tâche planifiée
+      <div class="cal-legend-dot" style="background:var(--gold);opacity:0.5"></div> Tâche planifiée
     </div>
   </div>
 

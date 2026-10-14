@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 session_start();
-require_once  __DIR__ . '/../../BDD/bdd.php';
-require_once  __DIR__ . '/../security.php';
+require_once __DIR__ . '/../../BDD/bdd.php';
+require_once __DIR__ . '/../security.php';
 
 /* 1. Méthode HTTP */
 exiger_methode_post();
@@ -32,7 +32,7 @@ try {
 
 
 
-/* 5.  on met à jour */
+/* 5. Si le nouveau mot de passe est fourni → on met à jour */
 $new_mdp_brut = (string)($_POST['new_password'] ?? '');
 $confirm      = (string)($_POST['confirm_password'] ?? '');
 
@@ -58,6 +58,9 @@ if ($new_mdp_brut !== '') {
     exit;
 }
 
+/* Étape 1 réussie (la réponse est bonne) mais pas de nouveau mdp
+   → on affiche le formulaire de nouveau mot de passe.
+   On regénère un CSRF pour ce formulaire. */
 generer_csrf_token();
 ?>
 
@@ -74,7 +77,7 @@ generer_csrf_token();
     <aside class="login-brand">
       <div class="brand-content">
         <a href="../../html/page_de_garde.php" class="brand-logo">
-          <img src="../../image/marque.png" alt="Fokus" style='width:65%'/>
+          <img src="../../image/marque.png" alt="Fokus" />
         </a>
         <h1 class="brand-tagline">Nouveau<br />mot de passe.</h1>
       </div>

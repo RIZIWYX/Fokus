@@ -1,3 +1,13 @@
+/* ==========================================================
+   FOKUS — calendar.js
+   Fonction commune pour dashboard et agenda.
+
+   Usage dashboard :
+     initCalendar({ datesTaches, titleId, gridId, prevId, nextId });
+
+   Usage agenda (avec callback clic jour) :
+     initCalendar({ ..., dayCls: 'agenda-day', onDayClick: (j,m,a) => {} });
+   ========================================================== */
 "use strict";
 
 function initCalendar({
@@ -6,7 +16,7 @@ function initCalendar({
   gridId = "calendar-days",
   prevId = "cal-prev",
   nextId = "cal-next",
-  dayCls = "cal-day",
+  dayCls = "cal-day", // 'cal-day' pour dashboard, 'agenda-day' pour agenda
   onDayClick = null,
 }) {
   const MOIS = [

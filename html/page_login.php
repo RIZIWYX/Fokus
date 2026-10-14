@@ -4,12 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FOKUS — Connexion</title>
-    <link rel="stylesheet" href="../css/global.css" />
-    <link rel="stylesheet" href="../css/login.css" />
-    <link rel="icon" type="image/png" href="../image/logo.png" />
-    <script src="../js/main.js" defer></script>
-    <script src="../js/errors.js" defer></script>
-    <script src="../js/success.js" defer></script>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/login.css" />
+    <link rel="icon" type="image/png" href="/image/logo.png" />
   </head>
   <body class="login-body">
 
@@ -17,8 +14,8 @@
 
       <aside class="login-brand">
         <div class="brand-content">
-          <a href="page_de_garde.php" class="brand-logo">
-            <img style="width:55%" src="../image/marque.png" alt="Fokus" />
+          <a href="/html/page_de_garde.php" class="brand-logo">
+            <img style="max-width:160px;width:100%" src="/image/marque.png" alt="Fokus" />
           </a>
           <h1 class="brand-tagline">Organisez.<br />Priorisez.<br />Accomplissez.</h1>
           <p class="brand-desc">
@@ -35,12 +32,13 @@
       </aside>
 
       <main class="login-main">
-        <div class="auth-tabs">
-          <button class="auth-tab active" data-tab="login">Connexion</button>
-          <button class="auth-tab" data-tab="register">Inscription</button>
+        <div class="auth-tabs" role="tablist">
+          <button class="auth-tab active" data-tab="login" role="tab" aria-selected="true">Connexion</button>
+          <button class="auth-tab" data-tab="register" role="tab" aria-selected="false">Inscription</button>
         </div>
+
         <!-- Formulaire Connexion -->
-        <form class="auth-form active" id="form-login" action="../php/login/login.php" method="POST" novalidate>
+        <form class="auth-form active" id="form-login" action="/php/login/login.php" method="POST" novalidate>
           <div class="form-header">
             <h2>Bon retour 👋</h2>
             <p>Connectez-vous à votre espace FOKUS</p>
@@ -53,7 +51,7 @@
           <div class="form-group">
             <label for="login-password">
               Mot de passe
-              <a href="../php/login/get_mail.php" class="forgot-link">Mot de passe oublié ?</a>
+              <a href="/php/login/get_mail.php" class="forgot-link">Mot de passe oublié ?</a>
             </label>
             <div class="password-wrapper">
               <input type="password" id="login-password" name="password" class="form-control"
@@ -65,7 +63,7 @@
         </form>
 
         <!-- Formulaire Inscription -->
-        <form class="auth-form" id="form-register" action="../php/login/register.php" method="POST" novalidate>
+        <form class="auth-form" id="form-register" action="/php/login/register.php" method="POST" novalidate>
           <div class="form-header">
             <h2>Créer un compte</h2>
             <p>Rejoignez FOKUS et commencez à vous organiser</p>
@@ -98,8 +96,8 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="question_secrete">Récupération de mot de passe</label>
-<select id="question_secrete" name="question_secrete" class="form-control">
+            <label for="forgot_mdp">Récupération de mot de passe</label>
+            <select name="question_secrete" class="form-control">
               <option value="">-- Choisissez une question --</option>
               <option value="1">Quel est le prénom de votre mère ?</option>
               <option value="2">Quel est le nom de votre animal de compagnie ?</option>
@@ -115,13 +113,16 @@
           <div class="form-check">
             <input type="checkbox" id="terms" name="terms"  value="1" required />
             <label for="terms">
-              J'accepte les <a href="../php/login/terms.php" class="gold-link">conditions d'utilisation</a>
+              J'accepte les <a href="/php/login/terms.php" class="gold-link">conditions d'utilisation</a>
             </label>
           </div>
           <button type="submit" class="btn-gold btn-full">Créer mon compte</button>
         </form>
       </main>
     </div>
-    <?php include '../php/modals.php'; ?>
+
+    <script src="/js/main.js"></script>
+    <script src="/js/errors.js"></script>
+    <script src="/js/success.js"></script>
   </body>
 </html>

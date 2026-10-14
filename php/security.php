@@ -10,9 +10,9 @@ declare(strict_types=1);
    1) REDIRECTION SÉCURISÉE
    - Bloque les open redirects (referer vers domaine externe)
    - Nettoie les anciens paramètres success/error
-   - Ajoute le bon séparateur 
+   - Ajoute le bon séparateur (? ou &)
    ========================================================== */
-function rediriger(string $cle, bool $est_erreur = false, string $defaut = '../html/dashboard.php'): void
+function rediriger(string $cle, bool $est_erreur = false, string $defaut = '/html/dashboard.php'): void
 {
     $referer = $_SERVER['HTTP_REFERER'] ?? $defaut;
 
@@ -34,12 +34,12 @@ function rediriger(string $cle, bool $est_erreur = false, string $defaut = '../h
 }
 
 /* Raccourcis pour plus de lisibilité */
-function rediriger_succes(string $cle, string $defaut = '../html/dashboard.php'): void
+function rediriger_succes(string $cle, string $defaut = '/html/dashboard.php'): void
 {
     rediriger($cle, false, $defaut);
 }
 
-function rediriger_erreur(string $cle, string $defaut = '../html/dashboard.php'): void
+function rediriger_erreur(string $cle, string $defaut = '/html/dashboard.php'): void
 {
     rediriger($cle, true, $defaut);
 }
@@ -68,12 +68,12 @@ function exiger_utilisateur_connecte(): string
     $user = $_SESSION['user'] ?? '';
 
     if ($user === '') {
-        header("Location: ../html/page_login.php");
+        header("Location: /html/page_login.php");
         exit;
     }
 
     // Vérifier que l'utilisateur existe vraiment en BDD
-    require_once  __DIR__ . '/../BDD/bdd.php';
+    require_once __DIR__ . '/../BDD/bdd.php';
     $connexion = getConnexion();
     $stmt = $connexion->prepare("SELECT 1 FROM PERSONNE WHERE NOM_P = :user");
     $stmt->execute([':user' => $user]);
@@ -81,7 +81,7 @@ function exiger_utilisateur_connecte(): string
     if (!$stmt->fetchColumn()) {
         session_unset();
         session_destroy();
-        header("Location: ../html/page_login.php");
+        header("Location: /html/page_login.php");
         exit;
     }
 
@@ -274,7 +274,7 @@ function exiger_mots_de_passe_identiques(string $mdp1, string $mdp2): void
 
 /**
  * Hashe un mot de passe en clair avec l'algorithme par défaut
- * de PHP (actuellement bcrypt). 
+ * de PHP (actuellement bcrypt, mais évoluera). 
  */
 function hasher_mot_de_passe(string $mdp_clair): string
 {
@@ -296,12 +296,12 @@ function verifier_mot_de_passe(string $mdp_clair, string $hash_bdd): bool
  */
 function recuperer_hash_utilisateur(string $user): ?string
 {
-    require_once  __DIR__ . '/../BDD/bdd.php';
+    require_once __DIR__ . '/../BDD/bdd.php';
     $connexion = getConnexion();
     $stmt = $connexion->prepare("SELECT PASSEWORD FROM PERSONNE WHERE NOM_P = :user");
     $stmt->execute([':user' => $user]);
     $row = $stmt->fetch();
-    return $row ? $row['PASSEWORD'] : null;
+    return $row ? ($row['PASSEWORD'] ?? null) : null;
 }
 
 /**

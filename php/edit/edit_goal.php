@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 session_start();
-require_once  __DIR__ . '/../../BDD/bdd.php';
-require_once  __DIR__ . '/../security.php';
+require_once __DIR__ . '/../../BDD/bdd.php';
+require_once __DIR__ . '/../security.php';
 
 /* 1. Méthode HTTP, authentification, CSRF */
 exiger_methode_post();
@@ -13,7 +13,9 @@ verifier_csrf();
 $ancien_titre  = valider_texte_obligatoire($_POST['ancien_titre']  ?? null, 200);
 $nouveau_titre = valider_texte_obligatoire($_POST['nouveau_titre'] ?? null, 200);
 
-/* 3. Mise à jour */
+/* 3. Mise à jour
+   Le WHERE inclut UTILISATEUR_O → si l'objectif n'appartient
+   pas à l'utilisateur, rien n'est modifié (silencieusement). */
 try {
     $connexion = getConnexion();
     $sql = "UPDATE OBJECTIF SET TITRE_O = :nouveau_titre 

@@ -6,9 +6,22 @@
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/page_de_garde.css" />
     <link rel="icon" type="image/png" href="../image/logo.png" />
+    <?php include __DIR__ . '/../php/modals.php'; ?>
+          <script src="/js/main.js" defer></script>
+    <script src="/js/calendar.js"></script>
+    <script src="/js/delete.js" defer></script>
+    <script src="/js/success.js" defer></script>
+    <script src="/js/errors.js" defer></script>
+    <script src="/js/edit.js" defer></script>
     <title>Fokus</title>
   </head>
   <body>
+    <header>
+      <a href="#" class="header-logo">
+        <img style="width:100%" src="../image/marque.png" alt="Fokus" class="header-image" />
+      </a>
+    </header>
+
     <div class="hero">
       <!-- Colonne gauche : texte de présentation -->
       <div class="hero-left">
@@ -48,6 +61,5 @@
         </div>
       </div>
     </div>
-    <?php include '../php/modals.php'; ?>
   </body>
 </html>

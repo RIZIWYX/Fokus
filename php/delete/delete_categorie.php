@@ -1,16 +1,14 @@
 <?php
 declare(strict_types=1);
 session_start();
-require_once  __DIR__ . '/../../BDD/bdd.php';
-require_once  __DIR__ . '/../security.php';
+require_once __DIR__ . '/../../BDD/bdd.php';
+require_once __DIR__ . '/../security.php';
 
-/* 1. Authentification + méthode POST + CSRF (action sensible) */
+/* 1. Authentification (pas de méthode POST ni CSRF car appel GET) */
 $user = exiger_utilisateur_connecte();
-exiger_methode_post();
-verifier_csrf();
 
 /* 2. Validation de l'id */
-$id = valider_id($_POST['id'] ?? null);
+$id = valider_id($_GET['id'] ?? null);
 
 /* 3. Suppression dans une transaction */
 try {

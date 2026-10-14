@@ -5,7 +5,7 @@
 .login-body {
   background: var(--bg-primary);
   display: flex;
-  min-height: 20vh;
+  min-height: -20vh;
 }
 
 .login-container {
@@ -56,8 +56,7 @@
 .brand-logo {
   display: flex;
   align-items: center;
-  margin-bottom: -40px;
-  margin-top: -150px;
+  margin-bottom: 8px;
 }
 
 .brand-tagline {

@@ -1,36 +1,31 @@
 /* ==========================================================
    FOKUS — Page Mes Tâches (Kanban)
    ========================================================== */
-/* ---- Tout sur UNE ligne ---- */
+
+/* ---- Barre d'actions top ---- */
+
 .taches-header-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
   margin-bottom: 20px;
+  gap: 16px;
 }
 
-/* Titre : ne rétrécit pas */
-.taches-header-bar > div:first-child {
-  flex-shrink: 0;
+.taches-toolbar {
+  display: contents; /* supprime le bloc toolbar */
 }
 
-/* Filtres + recherche : au milieu, prennent l'espace restant */
-.taches-toolbar-center {
+.taches-toolbar-left {
   display: flex;
   align-items: center;
-  gap: 12px;
-  flex: 1;
-  justify-content: center;
-  min-width: 0;
+  gap: 10px;
 }
 
-/* Boutons : collés à droite */
 .taches-toolbar-right {
   display: flex;
-  gap: 10px;
   align-items: center;
-  flex-shrink: 0;
+  gap: 10px;
 }
 
 /* Filtre par statut */
@@ -82,7 +77,7 @@
   border-radius: var(--radius-sm);
   color: var(--text-primary);
   font-size: 0.85rem;
-  width: 335px;
+  width: 510px;
   transition: var(--transition);
 }
 .search-input:focus {

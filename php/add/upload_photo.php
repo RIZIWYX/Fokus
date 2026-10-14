@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 session_start();
-require_once  __DIR__ . '/../../BDD/bdd.php';
-require_once  __DIR__ . '/../security.php';
+require_once __DIR__ . '/../../BDD/bdd.php';
+require_once __DIR__ . '/../security.php';
 
 /* ── 1. Authentification ── */
 $user = exiger_utilisateur_connecte();
@@ -51,17 +51,15 @@ $base64 = 'data:' . $mimeType . ';base64,' . base64_encode($contenu);
 /* ── 5. Sauvegarde en BDD ── */
 try {
     $connexion = getConnexion();
-
     $stmt = $connexion->prepare(
-        "UPDATE PHOTO_PROFIL
-         SET PHOTO = :photo, DATE_UPLOAD = NOW()
-         WHERE UTILISATEUR = :user"
+        "INSERT INTO PHOTO_PROFIL (UTILISATEUR, PHOTO)
+         VALUES (:user, :photo)
+         ON CONFLICT (UTILISATEUR) DO UPDATE SET PHOTO = EXCLUDED.PHOTO, DATE_UPLOAD = NOW()"
     );
     $stmt->execute([
         ':user'  => $user,
         ':photo' => $base64,
     ]);
-
     $connexion = null;
 } catch (PDOException $e) {
     gerer_erreur_pdo($e, 'upload_photo');

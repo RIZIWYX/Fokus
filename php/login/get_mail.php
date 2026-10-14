@@ -16,7 +16,7 @@
       <aside class="login-brand">
         <div class="brand-content">
           <a href="../../html/page_de_garde.php" class="brand-logo">
-            <img src="../../image/marque.png" alt="Fokus" style='width:65%' />
+            <img src="../../image/marque.png" alt="Fokus" />
           </a>
           <h1 class="brand-tagline">
             Récupération<br />de compte.
@@ -58,10 +58,13 @@
           </form>
         </div>
       </main>
+
     </div>
 
+    <!-- Modals -->
+
+<?php include __DIR__ . '/../modals.php'; ?>
     <script src="../../js/main.js"></script>
     <script src="../../js/errors.js"></script>
-    <?php include '../modals.php'; ?>
   </body>
 </html>
