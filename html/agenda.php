@@ -161,6 +161,8 @@ $cal_mode = 'agenda';
         : '<div style="color:var(--text-muted);font-size:0.78rem;padding:8px 0;text-align:center">Aucune tâche ce jour.</div>';
     }
 
+    // calendar.js est chargé en defer : on attend qu'il soit exécuté
+    document.addEventListener('DOMContentLoaded', () => {
     initCalendar({
       datesTaches:   <?= json_encode($dates_taches) ?>,
       titleId:       'cal-title',
@@ -169,6 +171,7 @@ $cal_mode = 'agenda';
       nextId:        'cal-next',
       dayCls:        'agenda-day',
       onDayClick:    (jour, mois, annee) => afficherTachesJour(jour, mois, annee),
+    });
     });
   </script>
   <?php include __DIR__ . '/../php/modals.php'; ?>
