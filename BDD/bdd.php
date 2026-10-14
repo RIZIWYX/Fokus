@@ -12,6 +12,13 @@ function getConnexion(): PDO {
         $port = getenv('PGPORT')     ?: '5432';
 
         $dsn = "pgsql:host=$host;port=$port;dbname=$db;sslmode=require";
+
+        // libpq trop ancien sur Vercel (pas de SNI) : on indique l'endpoint Neon explicitement
+        if (str_ends_with($host, '.neon.tech')) {
+            $endpoint = str_replace('-pooler', '', explode('.', $host)[0]);
+            $dsn .= ";options='endpoint=$endpoint'";
+        }
+
         $connexion = new PDO($dsn, $user, $pass);
         $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $connexion->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
