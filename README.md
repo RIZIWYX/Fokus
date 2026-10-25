@@ -1,4 +1,12 @@
-# 🎯 FOKUS
+# 🎯 Fokus
+
+[![CI](https://github.com/RIZIWYX/fokus/actions/workflows/ci.yml/badge.svg)](https://github.com/RIZIWYX/fokus/actions/workflows/ci.yml)
+[![Démo](https://img.shields.io/badge/d%C3%A9mo-fokus--riziwyx.vercel.app-d4a017)](https://fokus-riziwyx.vercel.app/)
+![PHP](https://img.shields.io/badge/PHP-8-777BB4)
+![MySQL](https://img.shields.io/badge/MySQL-PDO-4479A1)
+[![Licence MIT](https://img.shields.io/badge/licence-MIT-green)](LICENSE)
+
+🌐 **Démo en ligne** : https://fokus-riziwyx.vercel.app/
 
 Application web full-stack de gestion de tâches, conçue pour aider les étudiants
 à organiser leur travail, visualiser leurs échéances et garder le focus.
@@ -53,7 +61,10 @@ fokus/
 │   └── edit.js        # Édition de tâches
 ├── css/               # Feuilles de style
 ├── BDD/
-│   └── bdd.php        # Connexion PDO centralisée
+│   ├── bdd.php        # Connexion PDO centralisée
+│   └── config.example.php # Modèle de configuration (identifiants)
+├── docs/
+│   └── compte-rendu.pdf   # Compte rendu du projet
 └── sql/
     └── script.sql     # Schéma et données initiales
 ```
@@ -66,7 +77,7 @@ La sécurité a été un fil rouge du projet. La bibliothèque `php/security.php
 
 - **Mots de passe** hashés avec `password_hash()` (bcrypt) — jamais stockés en clair
 - **Protection CSRF** sur tous les formulaires **et sur les actions sensibles** (suppressions, bascule « urgent »), déclenchées en POST avec jeton vérifié — jamais en GET
-- **Requêtes préparées** (PDO) sur 100 % des accès BDD → aucune injection SQL possible
+- **Requêtes préparées** (PDO) sur tous les accès à la base, contre les injections SQL
 - **Validation stricte** de toutes les entrées utilisateur (longueur, format, type, listes fermées)
 - **Protection contre les open redirects** — vérification du host du referer avant redirection
 - **Vérification de la méthode HTTP** (POST imposé sur les actions sensibles)
@@ -87,7 +98,7 @@ La sécurité a été un fil rouge du projet. La bibliothèque `php/security.php
 
 1. **Cloner le dépôt**
    ```bash
-   git clone https://github.com/<utilisateur>/fokus.git
+   git clone https://github.com/RIZIWYX/fokus.git
    cd fokus
    ```
 
@@ -98,7 +109,10 @@ La sécurité a été un fil rouge du projet. La bibliothèque `php/security.php
 
 3. **Configurer la connexion**
 
-   Modifier `BDD/bdd.php` avec tes identifiants MySQL (hôte, base, utilisateur, mot de passe).
+   ```bash
+   cp BDD/config.example.php BDD/config.php
+   ```
+   Puis renseigner dans `BDD/config.php` les identifiants MySQL (hôte, base, utilisateur, mot de passe). Ce fichier n'est pas versionné.
 
 4. **Lancer le serveur**
    ```bash
@@ -107,7 +121,7 @@ La sécurité a été un fil rouge du projet. La bibliothèque `php/security.php
 
 5. **Accéder à l'application**
 
-   Ouvrir [http://localhost:8000/html/page_login.php](http://localhost:8000/html/page_de_garde.php) dans le navigateur.
+   Ouvrir [http://localhost:8000/html/page_de_garde.php](http://localhost:8000/html/page_de_garde.php) dans le navigateur.
 
 ---
 
@@ -125,10 +139,10 @@ La sécurité a été un fil rouge du projet. La bibliothèque `php/security.php
 
 ## 👥 Auteurs
 
-Projet réalisé par **Graine Rayane** et son binôme — L2 Informatique, Université de Rouen Normandie, 2025-2026.
+Projet réalisé par **Rayane Graïne** et son binôme — L2 Informatique, Université de Rouen Normandie, 2025-2026.
 
 ---
 
 ## 📄 Licence
 
-Projet académique — usage pédagogique.
+Distribué sous licence **MIT**, voir [LICENSE](LICENSE).
