@@ -67,7 +67,7 @@ function toggleUrgent(btn, id) {
 }
 
 /* ----------------------------------------------------------
-   MODAL VUE DÉTAIL — tâche
+   MODAL VUE DÉTAIL - tâche
 ---------------------------------------------------------- */
 function ouvrirViewTache(el) {
   const d = el.dataset;
@@ -124,7 +124,7 @@ function ouvrirViewTache(el) {
     noDescWrap.style.display = "";
   }
 
-  /* Bouton Modifier — relie au modal edit */
+  /* Bouton Modifier - relie au modal edit */
   const editBtn = document.getElementById("view-edit-btn");
   editBtn.onclick = () => {
     closeModal("modal-view-task");

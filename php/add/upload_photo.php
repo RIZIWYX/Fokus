@@ -4,14 +4,14 @@ session_start();
 require_once  __DIR__ . '/../../BDD/bdd.php';
 require_once  __DIR__ . '/../security.php';
 
-/* ── 1. Authentification ── */
+/* -- 1. Authentification -- */
 $user = exiger_utilisateur_connecte();
 
-/* ── 2. Méthode & CSRF ── */
+/* -- 2. Méthode & CSRF -- */
 exiger_methode_post();
 verifier_csrf();
 
-/* ── 3. Vérification du fichier ── */
+/* -- 3. Vérification du fichier -- */
 if (empty($_FILES['photo'])) {
     rediriger_erreur('champs_vides');
 }
@@ -41,14 +41,14 @@ if (!in_array($mimeType, $typesOk, true)) {
     rediriger_erreur('photo_type_invalide');
 }
 
-/* ── 4. Encodage base64 ── */
+/* -- 4. Encodage base64 -- */
 $contenu = file_get_contents($file['tmp_name']);
 if ($contenu === false) {
     rediriger_erreur('erreur_serveur');
 }
 $base64 = 'data:' . $mimeType . ';base64,' . base64_encode($contenu);
 
-/* ── 5. Sauvegarde en BDD ── */
+/* -- 5. Sauvegarde en BDD -- */
 try {
     $connexion = getConnexion();
 

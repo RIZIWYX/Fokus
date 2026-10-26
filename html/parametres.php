@@ -5,7 +5,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FOKUS — Paramètres</title>
+    <title>FOKUS - Paramètres</title>
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/parametres.css" />
     <link rel="icon" type="image/png" href="../image/logo.png" />
@@ -16,9 +16,9 @@
   </head>
   <body>
 
- <!-- ══════════════════════════════
+ <!-- ==============================
          NAVBARRE
-    ══════════════════════════════ -->
+    ============================== -->
     <div class="app-layout">
       <aside class="app-sidebar" id="sidebar">
         <a href="dashboard.php" class="sidebar-logo">
@@ -95,9 +95,9 @@ $breadcrumbs = [
 $chemin = $breadcrumbs[$page_courante] ?? ['Accueil', ucfirst($page_courante)];
 ?>
 
-<!-- ══════════════════════════════
+<!-- ==============================
      HEADER
-══════════════════════════════ -->
+============================== -->
 <header class="app-header">
   <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
     ☰

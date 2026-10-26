@@ -40,7 +40,7 @@ function initCalendar({
     let debutSem = new Date(annee, mois, 1).getDay();
     debutSem = debutSem === 0 ? 7 : debutSem;
 
-    titre.textContent = `📅 ${MOIS[mois]} ${annee}`;
+    titre.textContent = `${MOIS[mois]} ${annee}`;
 
     const joursAvecTaches = datesTaches
       .filter((d) => d?.startsWith(ym))

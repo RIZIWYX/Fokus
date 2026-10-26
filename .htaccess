@@ -1,0 +1,14 @@
+# Repli pour les hébergements Apache + mod_php sans accès au php.ini.
+# La vraie config est dans conf/php-fokus.ini.
+<IfModule mod_php.c>
+    php_flag  session.upload_progress.enabled off
+    php_value post_max_size 6M
+    php_value upload_max_filesize 4M
+    php_value max_input_vars 200
+</IfModule>
+
+# Le dossier de config BDD et les scripts d'admin ne doivent pas être servis.
+<FilesMatch "^(\.user\.ini|composer\.json)$">
+    Require all denied
+</FilesMatch>
+RedirectMatch 404 ^/(BDD|conf|scripts|sql)/

@@ -5,7 +5,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FOKUS — Statistiques</title>
+    <title>FOKUS - Statistiques</title>
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/statistiques.css" />
     <link rel="icon" type="image/png" href="../image/logo.png" />
@@ -13,9 +13,9 @@
   </head>
   <body>
 
- <!-- ══════════════════════════════
+ <!-- ==============================
          NAVBARRE
-    ══════════════════════════════ -->
+    ============================== -->
     <div class="app-layout">
       <aside class="app-sidebar" id="sidebar">
         <a href="dashboard.php" class="sidebar-logo">
@@ -92,9 +92,9 @@ $breadcrumbs = [
 $chemin = $breadcrumbs[$page_courante] ?? ['Accueil', ucfirst($page_courante)];
 ?>
 
-<!-- ══════════════════════════════
+<!-- ==============================
      HEADER
-══════════════════════════════ -->
+============================== -->
 <header class="app-header">
   <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
     ☰
@@ -210,7 +210,7 @@ $chemin = $breadcrumbs[$page_courante] ?? ['Accueil', ucfirst($page_courante)];
                     <span class="cat-bar-dot" style="background: <?= htmlspecialchars($cat['COLOR_C']) ?>"></span>
                     <?= htmlspecialchars($cat['NOM_C']) ?>
                   </span>
-                  <span class="cat-bar-count"><?= $cat['nb'] ?> tâche<?= $cat['nb'] > 1 ? 's' : '' ?> — <?= $pct ?>%</span>
+                  <span class="cat-bar-count"><?= $cat['nb'] ?> tâche<?= $cat['nb'] > 1 ? 's' : '' ?> - <?= $pct ?>%</span>
                 </div>
                 <div class="cat-bar-track">
                   <div class="cat-bar-fill" style="width: <?= $pct ?>%; background: <?= htmlspecialchars($cat['COLOR_C']) ?>"></div>
@@ -227,7 +227,7 @@ $chemin = $breadcrumbs[$page_courante] ?? ['Accueil', ucfirst($page_courante)];
                     <span class="cat-bar-dot" style="background: var(--text-muted)"></span>
                     Sans catégorie
                   </span>
-                  <span class="cat-bar-count"><?= $nb_sans_categories ?> tâche<?= $nb_sans_categories > 1 ? 's' : '' ?> — <?= $pct_sans ?>%</span>
+                  <span class="cat-bar-count"><?= $nb_sans_categories ?> tâche<?= $nb_sans_categories > 1 ? 's' : '' ?> - <?= $pct_sans ?>%</span>
                 </div>
                 <div class="cat-bar-track">
                   <div class="cat-bar-fill" style="width: <?= $pct_sans ?>%; opacity: 0.4"></div>
@@ -239,7 +239,7 @@ $chemin = $breadcrumbs[$page_courante] ?? ['Accueil', ucfirst($page_courante)];
 
         <aside class="statistique-aside">
           <div class="stats-summary">
-            <div class="stats-summary-header">📈 Vue d'ensemble</div>
+            <div class="stats-summary-header">Vue d'ensemble</div>
             <div class="stats-grid">
               <div class="stat-cell">
                 <span class="stat-cell-value"><?= $nb_taches ?></span>

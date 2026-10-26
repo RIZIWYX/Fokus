@@ -1,6 +1,6 @@
 <?php
 /* ==========================================================
-   FOKUS — modals.php
+   FOKUS - modals.php
    ========================================================== */
 
 $notif_password = $_SESSION['notif_password'] ?? null;
@@ -12,13 +12,13 @@ require_once  __DIR__ . '/security.php';
 $csrf = generer_csrf_token();
 ?>
 
-<!-- ══════════════════════════════
-   MODAL — Ajouter une tâche
-══════════════════════════════ -->
+<!-- ==============================
+   MODAL - Ajouter une tâche
+============================== -->
 <div class="modal-overlay" id="modal-add-task" role="dialog" aria-modal="true" aria-labelledby="mat-title">
   <div class="modal">
     <div class="modal-header">
-      <h2 class="modal-title" id="mat-title">✦ Nouvelle Tâche</h2>
+      <h2 class="modal-title" id="mat-title">Nouvelle Tâche</h2>
       <button class="modal-close" onclick="closeModal('modal-add-task')" aria-label="Fermer">×</button>
     </div>
     <form action="../php/add/add_task.php" method="POST" novalidate>
@@ -74,13 +74,13 @@ $csrf = generer_csrf_token();
   </div>
 </div>
 
-<!-- ══════════════════════════════
-   MODAL — Modifier une tâche
-══════════════════════════════ -->
+<!-- ==============================
+   MODAL - Modifier une tâche
+============================== -->
 <div class="modal-overlay" id="modal-edit-task" role="dialog" aria-modal="true" aria-labelledby="met-title">
   <div class="modal">
     <div class="modal-header">
-      <h2 class="modal-title" id="met-title">✏️ Modifier la Tâche</h2>
+      <h2 class="modal-title" id="met-title">Modifier la Tâche</h2>
       <button class="modal-close" onclick="closeModal('modal-edit-task')" aria-label="Fermer">×</button>
     </div>
     <form action="../php/edit/edit_task.php" method="POST" novalidate>
@@ -137,13 +137,13 @@ $csrf = generer_csrf_token();
   </div>
 </div>
 
-<!-- ══════════════════════════════
-   MODAL — Ajouter une catégorie
-══════════════════════════════ -->
+<!-- ==============================
+   MODAL - Ajouter une catégorie
+============================== -->
 <div class="modal-overlay" id="modal-add-categorie" role="dialog" aria-modal="true" aria-labelledby="mac-title">
   <div class="modal" style="max-width: 420px">
     <div class="modal-header">
-      <h2 class="modal-title" id="mac-title">🗂️ Nouvelle Catégorie</h2>
+      <h2 class="modal-title" id="mac-title">Nouvelle Catégorie</h2>
       <button class="modal-close" onclick="closeModal('modal-add-categorie')" aria-label="Fermer">×</button>
     </div>
     <form action="../php/add/add_categorie.php" method="POST" novalidate>
@@ -168,13 +168,13 @@ $csrf = generer_csrf_token();
   </div>
 </div>
 
-<!-- ══════════════════════════════
-   MODAL — Modifier une catégorie
-══════════════════════════════ -->
+<!-- ==============================
+   MODAL - Modifier une catégorie
+============================== -->
 <div class="modal-overlay" id="modal-edit-categorie" role="dialog" aria-modal="true" aria-labelledby="mec-title">
   <div class="modal" style="max-width: 420px">
     <div class="modal-header">
-      <h2 class="modal-title" id="mec-title">✏️ Modifier la catégorie</h2>
+      <h2 class="modal-title" id="mec-title">Modifier la catégorie</h2>
       <button class="modal-close" onclick="closeModal('modal-edit-categorie')">×</button>
     </div>
     <form action="../php/edit/edit_categorie.php" method="POST" novalidate>
@@ -200,13 +200,13 @@ $csrf = generer_csrf_token();
   </div>
 </div>
 
-<!-- ══════════════════════════════
-   MODAL — Ajouter un objectif
-══════════════════════════════ -->
+<!-- ==============================
+   MODAL - Ajouter un objectif
+============================== -->
 <div class="modal-overlay" id="modal-add-objectif" role="dialog" aria-modal="true" aria-labelledby="ao-title">
   <div class="modal" style="max-width: 400px">
     <div class="modal-header">
-      <h2 class="modal-title" id="ao-title">🎯 Nouvel Objectif</h2>
+      <h2 class="modal-title" id="ao-title">Nouvel Objectif</h2>
       <button class="modal-close" onclick="closeModal('modal-add-objectif')" aria-label="Fermer">×</button>
     </div>
     <form action="../php/add/add_objectif.php" method="POST" novalidate>
@@ -223,13 +223,13 @@ $csrf = generer_csrf_token();
   </div>
 </div>
 
-<!-- ══════════════════════════════
-   MODAL — Modifier un objectif
-══════════════════════════════ -->
+<!-- ==============================
+   MODAL - Modifier un objectif
+============================== -->
 <div class="modal-overlay" id="modal-edit-objectif" role="dialog" aria-modal="true" aria-labelledby="eo-title">
   <div class="modal" style="max-width: 400px">
     <div class="modal-header">
-      <h2 class="modal-title" id="eo-title">✏️ Modifier l'objectif</h2>
+      <h2 class="modal-title" id="eo-title">Modifier l'objectif</h2>
       <button class="modal-close" onclick="closeModal('modal-edit-objectif')" aria-label="Fermer">×</button>
     </div>
     <form action="../php/edit/edit_goal.php" method="POST" novalidate>
@@ -248,13 +248,13 @@ $csrf = generer_csrf_token();
   </div>
 </div>
 
-<!-- ══════════════════════════════
-   MODAL — Modifier le profil
-══════════════════════════════ -->
+<!-- ==============================
+   MODAL - Modifier le profil
+============================== -->
 <div class="modal-overlay" id="modal-modify-profil" role="dialog" aria-modal="true" aria-labelledby="mmp-title">
   <div class="modal">
     <div class="modal-header">
-      <h2 class="modal-title" id="mmp-title">✏️ Modifier mes informations</h2>
+      <h2 class="modal-title" id="mmp-title">Modifier mes informations</h2>
       <button class="modal-close" onclick="closeModal('modal-modify-profil')" aria-label="Fermer">×</button>
     </div>
     <form action="../php/edit/update_profil.php" method="POST" novalidate>
@@ -291,14 +291,14 @@ $csrf = generer_csrf_token();
   </div>
 </div>
 
-<!-- ══════════════════════════════
-   MODAL — Photo de profil
-══════════════════════════════ -->
+<!-- ==============================
+   MODAL - Photo de profil
+============================== -->
 
 <div class="modal-overlay" id="modal-photo-profil" role="dialog" aria-modal="true" aria-labelledby="mpp-title">
   <div class="modal" style="max-width: 360px; text-align: center;">
     <div class="modal-header">
-      <h2 class="modal-title" id="mpp-title">📷 Photo de profil</h2>
+      <h2 class="modal-title" id="mpp-title">Photo de profil</h2>
       <button class="modal-close" onclick="closeModal('modal-photo-profil')" aria-label="Fermer">×</button>
     </div>
 
@@ -352,13 +352,13 @@ $csrf = generer_csrf_token();
   </div>
 </div>
 
-<!-- ══════════════════════════════
-   MODAL — Modifier le mot de passe
-══════════════════════════════ -->
+<!-- ==============================
+   MODAL - Modifier le mot de passe
+============================== -->
 <div class="modal-overlay" id="modal-modify-password" role="dialog" aria-modal="true" aria-labelledby="mmdp-title">
   <div class="modal">
     <div class="modal-header">
-      <h2 class="modal-title" id="mmdp-title">🔒 Modifier le mot de passe</h2>
+      <h2 class="modal-title" id="mmdp-title">Modifier le mot de passe</h2>
       <button class="modal-close" onclick="closeModal('modal-modify-password')" aria-label="Fermer">×</button>
     </div>
     <form action="../php/edit/update_password.php" method="POST" novalidate>
@@ -390,7 +390,7 @@ $csrf = generer_csrf_token();
       <div class="form-group">
         <label for="edit-question">Question secrète <span style="font-weight:400;opacity:.6">(optionnel)</span></label>
         <select id="edit-question" name="question" class="form-control">
-          <option value="">— Choisir une question —</option>
+          <option value="">Choisir une question</option>
           <option value="1">Quel est le prénom de votre mère ?</option>
           <option value="2">Quel est le nom de votre premier animal ?</option>
           <option value="3">Quelle est votre ville de naissance ?</option>
@@ -411,9 +411,9 @@ $csrf = generer_csrf_token();
   </div>
 </div>
 
-<!-- ══════════════════════════════
-   MODAL — Voir le détail d'une tâche
-══════════════════════════════ -->
+<!-- ==============================
+   MODAL - Voir le détail d'une tâche
+============================== -->
 <div class="modal-overlay" id="modal-view-task" role="dialog" aria-modal="true" aria-labelledby="mvt-title">
   <div class="modal modal-view">
     <div class="modal-header">
@@ -453,9 +453,9 @@ $csrf = generer_csrf_token();
   </div>
 </div>
 
-<!-- ══════════════════════════════
-   MODAL — Erreur
-══════════════════════════════ -->
+<!-- ==============================
+   MODAL - Erreur
+============================== -->
 <div class="modal-overlay" id="modal-error">
   <div class="modal" style="max-width: 380px; text-align: center;">
     <div class="modal-header" style="justify-content: center; border: none;">
@@ -466,9 +466,9 @@ $csrf = generer_csrf_token();
   </div>
 </div>
 
-<!-- ══════════════════════════════
-   MODAL — Succès
-══════════════════════════════ -->
+<!-- ==============================
+   MODAL - Succès
+============================== -->
 <div class="modal-overlay" id="modal-sucess">
   <div class="modal" style="max-width: 380px; text-align: center;">
     <div class="modal-header" style="justify-content: center; border: none;">
@@ -479,9 +479,9 @@ $csrf = generer_csrf_token();
   </div>
 </div>
 
-<!-- ══════════════════════════════
-   MODAL — Confirmation suppression
-══════════════════════════════ -->
+<!-- ==============================
+   MODAL - Confirmation suppression
+============================== -->
 <div class="modal-overlay" id="modal-confirm">
   <div class="modal" style="max-width: 400px; text-align: center;">
     <div class="modal-header" style="justify-content:center; border:none;">
@@ -495,19 +495,19 @@ $csrf = generer_csrf_token();
   </div>
 </div>
 
-<!-- ══════════════════════════════
-   MODAL — Notifications
-══════════════════════════════ -->
+<!-- ==============================
+   MODAL - Notifications
+============================== -->
 <div class="modal-overlay" id="modal-notification" role="dialog" aria-modal="true" aria-labelledby="mn-title">
   <div class="modal" style="max-width: 460px">
     <div class="modal-header">
-      <h2 class="modal-title" id="mn-title">🔔 Notifications</h2>
+      <h2 class="modal-title" id="mn-title">Notifications</h2>
       <button class="modal-close" onclick="closeModal('modal-notification')" aria-label="Fermer">×</button>
     </div>
     <div class="notif-list">
 
       <?php if (!empty($taches_en_retard)): ?>
-        <div class="notif-section-title">🔴 En retard</div>
+        <div class="notif-section-title">En retard</div>
         <?php foreach ($taches_en_retard as $t): ?>
           <div class="notif-item">
             <div class="notif-icon">🔴</div>
@@ -520,7 +520,7 @@ $csrf = generer_csrf_token();
       <?php endif; ?>
 
       <?php if (!empty($taches_urgentes_actives)): ?>
-        <div class="notif-section-title">⚡ Urgentes</div>
+        <div class="notif-section-title">Urgentes</div>
         <?php foreach ($taches_urgentes_actives as $t): ?>
           <div class="notif-item">
             <div class="notif-icon">⚡</div>
@@ -533,7 +533,7 @@ $csrf = generer_csrf_token();
       <?php endif; ?>
 
       <?php if (!empty($taches_aujourdhui)): ?>
-        <div class="notif-section-title">📅 Aujourd'hui</div>
+        <div class="notif-section-title">Aujourd'hui</div>
         <?php foreach ($taches_aujourdhui as $t): ?>
           <div class="notif-item">
             <div class="notif-icon">📅</div>
@@ -546,7 +546,7 @@ $csrf = generer_csrf_token();
       <?php endif; ?>
 
       <?php if ($notif_password || $notif_delete): ?>
-        <div class="notif-section-title">🔐 Sécurité & Actions</div>
+        <div class="notif-section-title">Sécurité & Actions</div>
         <?php if ($notif_password): ?>
           <div class="notif-item">
             <div class="notif-icon">🔐</div>

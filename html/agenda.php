@@ -8,7 +8,7 @@ $cal_mode = 'agenda';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FOKUS — Agenda</title>
+  <title>FOKUS - Agenda</title>
   <link rel="stylesheet" href="../css/global.css" />
   <link rel="stylesheet" href="../css/agenda.css" />
   <link rel="icon" type="image/png" href="../image/logo.png" />
@@ -19,9 +19,9 @@ $cal_mode = 'agenda';
 </head>
 <body>
 
- <!-- ══════════════════════════════
+ <!-- ==============================
          NAVBARRE
-    ══════════════════════════════ -->
+    ============================== -->
     <div class="app-layout">
       <aside class="app-sidebar" id="sidebar">
         <a href="dashboard.php" class="sidebar-logo">
@@ -100,9 +100,9 @@ $breadcrumbs = [
 $chemin = $breadcrumbs[$page_courante] ?? ['Accueil', ucfirst($page_courante)];
 ?>
 
-<!-- ══════════════════════════════
+<!-- ==============================
      HEADER
-══════════════════════════════ -->
+============================== -->
 <header class="app-header">
   <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
     ☰
@@ -169,7 +169,7 @@ $chemin = $breadcrumbs[$page_courante] ?? ['Accueil', ucfirst($page_courante)];
  <!-- Col 2 : Tâches du jour -->
       <div class="agenda-day-col">
         <div class="agenda-side-card" id="agenda-day-detail">
-          <div class="agenda-side-header gold" id="agenda-detail-title">📅 Tâches du jour</div>
+          <div class="agenda-side-header gold" id="agenda-detail-title">Tâches du jour</div>
           <div class="agenda-side-list" id="agenda-detail-list">
             <div style="color:var(--text-muted);font-size:0.78rem;padding:8px 0;text-align:center">
               Cliquez sur un jour du calendrier
@@ -181,7 +181,7 @@ $chemin = $breadcrumbs[$page_courante] ?? ['Accueil', ucfirst($page_courante)];
       <!-- Col 3 : Deadlines proches -->
       <div class="agenda-middle">
         <div class="agenda-side-card">
-          <div class="agenda-side-header danger">⚠️ Deadlines proches</div>
+          <div class="agenda-side-header danger">Deadlines proches</div>
           <div class="agenda-side-list">
             <?php if (!empty($taches_urgentes)): ?>
               <?php foreach ($taches_urgentes as $t): ?>
@@ -207,7 +207,7 @@ $chemin = $breadcrumbs[$page_courante] ?? ['Accueil', ucfirst($page_courante)];
 <!-- Col 4 : Toutes les deadlines -->
 <div class="agenda-right">
   <div class="agenda-side-card">
-    <div class="agenda-side-header">📋 Toutes les deadlines</div>
+    <div class="agenda-side-header">Toutes les deadlines</div>
     <div class="agenda-side-list">
       <?php if (empty($toutes_taches_agenda)): ?>
         <div style="color:var(--text-muted);font-size:0.78rem;padding:8px 0;text-align:center">
@@ -260,7 +260,7 @@ $chemin = $breadcrumbs[$page_courante] ?? ['Accueil', ucfirst($page_courante)];
       const titre   = document.getElementById('agenda-detail-title');
       const liste   = document.getElementById('agenda-detail-list');
 
-      titre.textContent = `📅 Tâches du ${jour} ${MOIS_NOMS[mois]}`;
+      titre.textContent = `Tâches du ${jour} ${MOIS_NOMS[mois]}`;
       liste.innerHTML   = taches.length
         ? taches.map(t => `
             <div class="agenda-task-item">

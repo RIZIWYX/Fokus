@@ -18,7 +18,7 @@ if (sidebarBackdrop) {
 }
 
 /* ----------------------------------------------------------
-   MODALS — open / close
+   MODALS - open / close
 ---------------------------------------------------------- */
 function openModal(id) {
   const overlay = document.getElementById(id);
@@ -55,7 +55,7 @@ document.addEventListener("keydown", (e) => {
 });
 
 /* ----------------------------------------------------------
-   PAGE LOGIN — onglets Connexion / Inscription
+   PAGE LOGIN - onglets Connexion / Inscription
 ---------------------------------------------------------- */
 const authTabs = document.querySelectorAll(".auth-tab");
 const authForms = document.querySelectorAll(".auth-form");
@@ -78,7 +78,7 @@ authTabs.forEach((tab) => {
 });
 
 /* ----------------------------------------------------------
-   TOGGLE MOT DE PASSE — afficher / masquer
+   TOGGLE MOT DE PASSE - afficher / masquer
 ---------------------------------------------------------- */
 document.querySelectorAll(".toggle-password").forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -92,7 +92,7 @@ document.querySelectorAll(".toggle-password").forEach((btn) => {
 });
 
 /* ----------------------------------------------------------
-   PAGE MES TÂCHES — filtres par statut
+   PAGE MES TÂCHES - filtres par statut
 ---------------------------------------------------------- */
 const filterTabs = document.querySelectorAll(".filter-tab");
 
@@ -119,7 +119,7 @@ function filterTasks(filter) {
 }
 
 /* ----------------------------------------------------------
-   PAGE MES TÂCHES — recherche en temps réel
+   PAGE MES TÂCHES - recherche en temps réel
 ---------------------------------------------------------- */
 const searchInput = document.getElementById("search-tasks");
 
@@ -135,7 +135,7 @@ if (searchInput) {
 }
 
 /* ----------------------------------------------------------
-   PAGINATION — boutons page actifs
+   PAGINATION - boutons page actifs
 ---------------------------------------------------------- */
 document.querySelectorAll(".pagination-btns, .pagination").forEach((nav) => {
   nav.querySelectorAll(".page-btn").forEach((btn) => {
@@ -152,13 +152,13 @@ document.querySelectorAll(".pagination-btns, .pagination").forEach((nav) => {
 });
 
 /* ----------------------------------------------------------
-   NOTIFICATIONS — panneau (structure de base)
+   NOTIFICATIONS - panneau (structure de base)
 ---------------------------------------------------------- */
 const notifBtn = document.getElementById("notif-btn");
 if (notifBtn) {
   notifBtn.addEventListener("click", () => {
     /* À développer : afficher un dropdown de notifications */
-    console.log("Notifications cliquées — à implémenter côté PHP");
+    console.log("Notifications cliquées - à implémenter côté PHP");
   });
 }
 
@@ -177,7 +177,7 @@ if (notifBtn) {
 })();
 
 /* ----------------------------------------------------------
-   DASHBOARD — pagination par colonne
+   DASHBOARD - pagination par colonne
    Les tâches sont déjà groupées en .task-page côté PHP.
    On affiche une seule .task-page à la fois (.active)
    et on bascule avec les flèches ‹ / ›.
@@ -200,7 +200,7 @@ if (notifBtn) {
     const elCurrent = pager.querySelector(".page-current");
     const elTotal = pager.querySelector(".page-total");
 
-    /* Pas de pagination si 0 ou 1 seule page → on cache le pager */
+    /* Pas de pagination si 0 ou 1 seule page, on cache le pager */
     if (totalPages <= 1) {
       pager.style.display = "none";
       return;
