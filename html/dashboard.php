@@ -5,7 +5,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FOKUS — Dashboard</title>
+    <title>FOKUS - Dashboard</title>
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/dashboard.css" />
     <link rel="icon" type="image/png" href="../image/logo.png" />
@@ -19,9 +19,9 @@
   </head>
   <body>
 
- <!-- ══════════════════════════════
+ <!-- ==============================
          NAVBARRE
-    ══════════════════════════════ -->
+    ============================== -->
     <div class="app-layout">
       <aside class="app-sidebar" id="sidebar">
         <a href="dashboard.php" class="sidebar-logo">
@@ -98,9 +98,9 @@ $breadcrumbs = [
 $chemin = $breadcrumbs[$page_courante] ?? ['Accueil', ucfirst($page_courante)];
 ?>
 
-<!-- ══════════════════════════════
+<!-- ==============================
      HEADER
-══════════════════════════════ -->
+============================== -->
 <header class="app-header">
   <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
     ☰
@@ -406,7 +406,7 @@ $chemin = $breadcrumbs[$page_courante] ?? ['Accueil', ucfirst($page_courante)];
           ?>
 
           <div class="card">
-            <div class="section-title section-title_notif">📅 Tâche la plus proche</div>
+            <div class="section-title section-title_notif">Tâche la plus proche</div>
             <div class="notif-list">
               <?php
               $today     = date('Y-m-d');
@@ -447,7 +447,7 @@ $chemin = $breadcrumbs[$page_courante] ?? ['Accueil', ucfirst($page_courante)];
                       </div>
                     <?php endif; ?>
                     <div class="notif-time" style="margin-top: 4px; color: <?= $is_retard ? 'var(--status-urgent)' : ($is_today ? '#ff9800' : 'var(--text-muted)') ?>">
-                      📅 <?= $prochaine['LIMIT_DATE'] ?> — <?= $label ?>
+                      📅 <?= $prochaine['LIMIT_DATE'] ?> - <?= $label ?>
                     </div>
                     <?php if ($is_urgent): ?>
                       <div style="font-size:0.75rem; color:var(--status-urgent); margin-top:2px;">🚨 Marquée urgente</div>

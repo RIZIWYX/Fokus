@@ -5,7 +5,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FOKUS — Profil</title>
+    <title>FOKUS - Profil</title>
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/profil.css" />
     <link rel="icon" type="image/png" href="../image/logo.png" />
@@ -17,9 +17,9 @@
   </head>
   <body>
 
- <!-- ══════════════════════════════
+ <!-- ==============================
          NAVBARRE
-    ══════════════════════════════ -->
+    ============================== -->
     <div class="app-layout">
       <aside class="app-sidebar" id="sidebar">
         <a href="dashboard.php" class="sidebar-logo">
@@ -96,9 +96,9 @@ $breadcrumbs = [
 $chemin = $breadcrumbs[$page_courante] ?? ['Accueil', ucfirst($page_courante)];
 ?>
 
-<!-- ══════════════════════════════
+<!-- ==============================
      HEADER
-══════════════════════════════ -->
+============================== -->
 <header class="app-header">
   <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
     ☰
@@ -191,14 +191,14 @@ $chemin = $breadcrumbs[$page_courante] ?? ['Accueil', ucfirst($page_courante)];
           <div class="profil-right">
             <div class="reinit-card">
               <div class="reinit-text">
-                <h2>⚠️ Réinitialiser mes tâches</h2>
+                <h2>Réinitialiser mes tâches</h2>
                 <p>Cette action supprimera toutes vos tâches de façon irréversible.</p>
               </div>
               <button class="btn-danger" onclick="SuppressionTacheAll()">Réinitialiser</button>
             </div>
             <div class="objectifs-card">
               <div class="objectifs-header">
-                <div class="objectifs-title">🎯 Mes Objectifs</div>
+                <div class="objectifs-title">Mes Objectifs</div>
                 <div style="display: flex; gap: 6px; align-items: center;">
                   <button class="btn-add-obj" onclick="openModal('modal-add-objectif')" title="Ajouter">＋</button>
                   <button class="btn-del-obj" onclick="SuppressionObjectifAll()" title="Supprimer tous">🗑</button>

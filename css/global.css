@@ -1,5 +1,5 @@
 /* ==========================================================
-   FOKUS — Global Styles
+   FOKUS - Global Styles
    Variables CSS, reset, composants partagés
    ========================================================== */
 
@@ -1104,7 +1104,7 @@ textarea.form-control {
 }
 
 /* ==========================================================
-   État vide — composant réutilisable (global.css)
+   État vide - composant réutilisable (global.css)
    ========================================================== */
 .empty-state {
   display: flex;

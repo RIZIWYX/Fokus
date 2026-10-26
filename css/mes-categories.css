@@ -1,5 +1,5 @@
 /* ==========================================================
-   FOKUS — Page Mes Catégories
+   FOKUS - Page Mes Catégories
    ========================================================== */
 
 /* ---- Header de page ---- */
@@ -156,7 +156,7 @@
   padding: 10px 12px;
   border-top: 1px solid var(--border);
 }
-/* .btn-add-card → global.css */
+/* .btn-add-card : dans global.css */
 
 /* Boutons action colonne */
 .btn-col-action {

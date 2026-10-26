@@ -3,13 +3,13 @@ session_start();
 require_once __DIR__ . '/../../BDD/bdd.php';
 require_once __DIR__ . '/../security.php';
 
-/* ── Authentification ── */
+/* -- Authentification -- */
 $username = exiger_utilisateur_connecte();
 
 $connexion = getConnexion();
 
 try {
-    /* ── Infos utilisateur ── */
+    /* -- Infos utilisateur -- */
     $req = $connexion->prepare("SELECT * FROM PERSONNE WHERE NOM_P = :nom");
     $req->execute([':nom' => $username]);
     $array = $req->fetch();
@@ -21,13 +21,13 @@ try {
     $nb_taches_par_page = (int)($array['NB_TACHES'] ?? 5);
     $first_letter       = strtoupper($username[0]);
 
-    /* ── Photo de profil ── */
+    /* -- Photo de profil -- */
     $req = $connexion->prepare("SELECT PHOTO FROM PHOTO_PROFIL WHERE UTILISATEUR = :nom");
     $req->execute([':nom' => $username]);
     $row = $req->fetch();
     $photo_profil = ($row && is_string($row['PHOTO'])) ? $row['PHOTO'] : null;
 
-    /* ── Compteurs ── */
+    /* -- Compteurs -- */
     $req = $connexion->prepare("SELECT COUNT(*) FROM TACHES WHERE UTILISATEUR_T = :nom");
     $req->execute([':nom' => $username]);
     $nb_taches = $req->fetchColumn();
@@ -36,7 +36,7 @@ try {
     $req->execute([':nom' => $username]);
     $nb_categories = $req->fetchColumn();
 
-    /* ── Toutes les tâches ── */
+    /* -- Toutes les tâches -- */
     $req = $connexion->prepare(
         "SELECT t.*, c.NOM_C as NOM_CAT, c.COLOR_C as COLOR_CAT
          FROM TACHES t
@@ -47,7 +47,7 @@ try {
     $req->execute([':nom' => $username]);
     $toutes_taches = $req->fetchAll();
 
-    /* ── Données agenda ── */
+    /* -- Données agenda -- */
     $req = $connexion->prepare(
         "SELECT NOM_T, STATUT, LIMIT_DATE FROM TACHES
          WHERE UTILISATEUR_T = :u
@@ -73,13 +73,13 @@ try {
 
 $connexion = null;
 
-/* ── Filtres par statut ── */
+/* -- Filtres par statut -- */
 $taches_en_cours = array_values(array_filter($toutes_taches, fn($t) => $t['STATUT'] === 'en_cours'));
 $taches_a_faire  = array_values(array_filter($toutes_taches, fn($t) => $t['STATUT'] === 'a_faire'));
 $taches_termines = array_values(array_filter($toutes_taches, fn($t) => $t['STATUT'] === 'termine'));
 $taches_urgent   = array_values(array_filter($toutes_taches, fn($t) => !empty($t['URGENT'])));
 
-/* ── Constantes globales ── */
+/* -- Constantes globales -- */
 $STATUT_COLORS = [
     'urgent'   => 'var(--status-urgent)',
     'en_cours' => 'var(--gold)',
@@ -100,14 +100,14 @@ $MOIS_FR = [
     'September'=>'Septembre','October'=>'Octobre','November'=>'Novembre','December'=>'Décembre'
 ];
 
-/* ── Données calendrier ── */
+/* -- Données calendrier -- */
 $dates_taches    = array_values(array_filter(array_column($toutes_taches_agenda, 'LIMIT_DATE')));
 $taches_par_date = [];
 foreach ($toutes_taches_agenda as $t) {
     $taches_par_date[$t['LIMIT_DATE']][] = $t;
 }
 
-/* ── Notifications ── */
+/* -- Notifications -- */
 $today = date('Y-m-d');
 $taches_en_retard        = array_values(array_filter($toutes_taches, fn($t) => $t['LIMIT_DATE'] && $t['LIMIT_DATE'] < $today && $t['STATUT'] !== 'termine'));
 $taches_urgentes_actives = array_values(array_filter($toutes_taches, fn($t) => !empty($t['URGENT']) && $t['STATUT'] !== 'termine'));

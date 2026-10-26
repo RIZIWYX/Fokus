@@ -2,13 +2,13 @@
 require_once  __DIR__ . '/../../BDD/bdd.php';
 require_once  __DIR__ . '/../security.php';
 
-/* ── Authentification ── */
+/* -- Authentification -- */
 $username = exiger_utilisateur_connecte();
 
 $connexion = getConnexion();
 
 try {
-    /* ── Compteurs par statut (une seule requête) ── */
+    /* -- Compteurs par statut (une seule requête) -- */
     $req = $connexion->prepare(
         "SELECT
             COUNT(*) as total,
@@ -36,7 +36,7 @@ try {
     $req->execute([':nom' => $username]);
     $nb_taches_urgent = (int)$req->fetchColumn();
 
-    /* ── Catégories utilisées ── */
+    /* -- Catégories utilisées -- */
     $req = $connexion->prepare(
         "SELECT COUNT(DISTINCT CATEGORIE_T) FROM TACHES
          WHERE UTILISATEUR_T = :nom AND CATEGORIE_T IS NOT NULL"
@@ -46,14 +46,14 @@ try {
 
     $nb_tache_avg = $nb_cat_utilisees > 0 ? round($nb_avec_cat / $nb_cat_utilisees, 1) : 0;
 
-    /* ── Objectifs ── */
+    /* -- Objectifs -- */
     $req = $connexion->prepare(
         "SELECT TITRE_O FROM OBJECTIF WHERE UTILISATEUR_O = :nom"
     );
     $req->execute([':nom' => $username]);
     $objectifs = $req->fetchAll();
 
-    /* ── Répartition par catégorie ── */
+    /* -- Répartition par catégorie -- */
     $req = $connexion->prepare(
         "SELECT c.NOM_C, c.COLOR_C, COUNT(t.ID_T) as nb
          FROM CATEGORIE c
@@ -71,6 +71,6 @@ try {
 
 $connexion = null;
 
-/* ── Progression globale ── */
+/* -- Progression globale -- */
 $pct_progression = $nb_taches > 0 ? round(($nb_taches_termines / $nb_taches) * 100) : 0;
 ?>

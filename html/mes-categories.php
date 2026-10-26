@@ -6,7 +6,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FOKUS — Mes Catégories</title>
+    <title>FOKUS - Mes Catégories</title>
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/mes-categories.css" />
     <link rel="icon" type="image/png" href="../image/logo.png" />
@@ -18,9 +18,9 @@
   </head>
   <body>
 
- <!-- ══════════════════════════════
+ <!-- ==============================
          NAVBARRE
-    ══════════════════════════════ -->
+    ============================== -->
     <div class="app-layout">
       <aside class="app-sidebar" id="sidebar">
         <a href="dashboard.php" class="sidebar-logo">
@@ -67,7 +67,7 @@
             <span class="nav-icon">👤</span> Mon Profil
           </a>
            <a href="historique.php" class="nav-item">
-            <span class="nav-icon">📜</span> Mon Profil
+            <span class="nav-icon">📜</span> Historique
           </a>
           <a href="parametres.php" class="nav-item">
             <span class="nav-icon">⚙️</span> Paramètres
@@ -97,9 +97,9 @@ $breadcrumbs = [
 $chemin = $breadcrumbs[$page_courante] ?? ['Accueil', ucfirst($page_courante)];
 ?>
 
-<!-- ══════════════════════════════
+<!-- ==============================
      HEADER
-══════════════════════════════ -->
+============================== -->
 <header class="app-header">
   <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
     ☰

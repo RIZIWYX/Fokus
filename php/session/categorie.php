@@ -2,7 +2,7 @@
 require_once  __DIR__ . '/data_user.php';
 require_once  __DIR__ . '/../security.php';
 
-// Session déjà vérifiée dans data_user.php — on récupère juste le user
+// Session déjà vérifiée dans data_user.php - on récupère juste le user
 $user = $username; // défini par data_user.php
 
 $connexion = getConnexion();

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FOKUS — Conditions d'utilisation</title>
+    <title>FOKUS - Conditions d'utilisation</title>
     <link rel="stylesheet" href="../../css/global.css" />
     <link rel="stylesheet" href="../../css/terms.css" />
     <link rel="icon" type="image/png" href="../../image/logo.png" />
@@ -12,7 +12,7 @@
   <body>
 
     <div class="terms-container">
-      <div class="terms-title">📄 Conditions d'utilisation</div>
+      <div class="terms-title">Conditions d'utilisation</div>
       <div class="terms-date">Dernière mise à jour : Mai 2026</div>
 
       <div class="terms-section">

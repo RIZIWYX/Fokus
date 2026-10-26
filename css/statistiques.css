@@ -1,5 +1,5 @@
 /* ==========================================================
-   FOKUS — Page Statistiques
+   FOKUS - Page Statistiques
    ========================================================== */
 
 /* ---- Grille des cartes stats ---- */
@@ -165,7 +165,7 @@
   color: var(--text-muted);
 }
 
-/* ---- Colonne de synthèse (stats-summary/stats-grid/stat-cell → global.css) ---- */
+/* ---- Colonne de synthèse (stats-summary/stats-grid/stat-cell : dans global.css) ---- */
 .statistique-aside {
   display: flex;
   flex-direction: column;

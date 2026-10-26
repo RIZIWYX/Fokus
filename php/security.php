@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 /* ==========================================================
-   FOKUS — security.php
+   FOKUS - security.php
    Bibliothèque de fonctions de sécurité.
    ========================================================== */
 
@@ -235,7 +235,7 @@ function valider_email($valeur): string
  *   - longueur minimale et maximale
  *   - au moins une minuscule, une majuscule, un chiffre
  *
- * Retourne le mot de passe en clair (validé) — à hasher ensuite
+ * Retourne le mot de passe en clair (validé) - à hasher ensuite
  * avec hasher_mot_de_passe() avant insertion en BDD.
  */
 function valider_mot_de_passe($valeur, int $min = 8, int $max = 72): string

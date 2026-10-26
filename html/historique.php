@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../php/session/data_user.php';
 
-/* ── Récupération de l'historique trié par date DÉCROISSANTE ── */
+/* -- Récupération de l'historique trié par date DÉCROISSANTE -- */
 try {
     $connexion = getConnexion();
     $stmt = $connexion->prepare(
@@ -18,13 +18,13 @@ try {
     $historique = [];
 }
 
-/* ── Regroupement par date ── */
+/* -- Regroupement par date -- */
 $historique_par_date = [];
 foreach ($historique as $h) {
     $historique_par_date[$h['SAVE_DATE']][] = $h;
 }
 
-/* ── Helper date en français ── */
+/* -- Helper date en français -- */
 function format_date_fr(string $date, array $MOIS_FR): string {
     $ts = strtotime($date);
     return date('d', $ts) . ' ' . strtr(date('F', $ts), $MOIS_FR) . ' ' . date('Y', $ts);
@@ -35,7 +35,7 @@ function format_date_fr(string $date, array $MOIS_FR): string {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FOKUS — Historique</title>
+  <title>FOKUS - Historique</title>
   <link rel="stylesheet" href="../css/global.css" />
   <link rel="stylesheet" href="../css/historique.css" />
   <link rel="icon" type="image/png" href="../image/logo.png" />
@@ -46,9 +46,9 @@ function format_date_fr(string $date, array $MOIS_FR): string {
 </head>
 <body>
 
-  <!-- ══════════════════════════════
+  <!-- ==============================
          NAVBARRE
-    ══════════════════════════════ -->
+    ============================== -->
     <div class="app-layout">
       <aside class="app-sidebar" id="sidebar">
         <a href="dashboard.php" class="sidebar-logo">
@@ -125,9 +125,9 @@ $breadcrumbs = [
 $chemin = $breadcrumbs[$page_courante] ?? ['Accueil', ucfirst($page_courante)];
 ?>
 
-<!-- ══════════════════════════════
+<!-- ==============================
      HEADER
-══════════════════════════════ -->
+============================== -->
 <header class="app-header">
   <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
     ☰
@@ -173,7 +173,7 @@ $chemin = $breadcrumbs[$page_courante] ?? ['Accueil', ucfirst($page_courante)];
   <main class="app-main">
     <div class="historique-header-bar">
       <div>
-        <h1 class="page-title">📜 Historique des tâches</h1>
+        <h1 class="page-title">Historique des tâches</h1>
         <p class="page-subtitle">Toutes les tâches créées, classées par date d'ajout</p>
       </div>
       <?php if (!empty($historique)): ?>

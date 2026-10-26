@@ -49,7 +49,7 @@ generer_csrf_token();
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>FOKUS — Mot de passe oublié</title>
+  <title>FOKUS - Mot de passe oublié</title>
   <link rel="stylesheet" href="../../css/global.css">
   <link rel="stylesheet" href="../../css/login.css">
 </head>
@@ -67,7 +67,7 @@ generer_csrf_token();
     <main class="login-main">
       <div class="auth-form active">
         <div class="form-header">
-          <h2>Question secrète 🔐</h2>
+          <h2>Question secrète</h2>
           <p>Répondez à votre question pour réinitialiser votre mot de passe</p>
         </div>
 

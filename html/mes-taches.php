@@ -6,7 +6,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FOKUS — Mes Tâches</title>
+    <title>FOKUS - Mes Tâches</title>
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/dashboard.css" />
     <link rel="stylesheet" href="../css/mes-taches.css" />
@@ -19,9 +19,9 @@
   </head>
   <body>
 
-    <!-- ══════════════════════════════
+    <!-- ==============================
          NAVBARRE
-    ══════════════════════════════ -->
+    ============================== -->
     <div class="app-layout">
       <aside class="app-sidebar" id="sidebar">
         <a href="dashboard.php" class="sidebar-logo">
@@ -75,9 +75,9 @@
       $chemin = $breadcrumbs[$page_courante] ?? ['Accueil', ucfirst($page_courante)];
       ?>
 
-      <!-- ══════════════════════════════
+      <!-- ==============================
            HEADER
-      ══════════════════════════════ -->
+      ============================== -->
       <header class="app-header">
         <button class="menu-toggle" id="menu-toggle" aria-label="Menu">☰</button>
         <nav class="breadcrumb">
@@ -107,9 +107,9 @@
         </div>
       </header>
 
-      <!-- ══════════════════════════════
+      <!-- ==============================
            CONTENU PRINCIPAL
-      ══════════════════════════════ -->
+      ============================== -->
       <?php if (empty($toutes_taches)): ?>
 
         <main class="app-main">

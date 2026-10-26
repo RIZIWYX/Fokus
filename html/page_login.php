@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FOKUS — Connexion</title>
+    <title>FOKUS - Connexion</title>
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/login.css" />
     <link rel="icon" type="image/png" href="../image/logo.png" />
@@ -42,7 +42,7 @@
         <!-- Formulaire Connexion -->
         <form class="auth-form active" id="form-login" action="../php/login/login.php" method="POST" novalidate>
           <div class="form-header">
-            <h2>Bon retour 👋</h2>
+            <h2>Bon retour</h2>
             <p>Connectez-vous à votre espace FOKUS</p>
           </div>
           <div class="form-group">

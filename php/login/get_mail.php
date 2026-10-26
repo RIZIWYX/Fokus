@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FOKUS — Récupération</title>
+    <title>FOKUS - Récupération</title>
     <link rel="stylesheet" href="../../css/global.css" />
     <link rel="stylesheet" href="../../css/login.css" />
     <link rel="icon" type="image/png" href="../../image/logo.png" />
@@ -32,7 +32,7 @@
       <main class="login-main">
         <div class="auth-form active">
           <div class="form-header">
-            <h2>Mot de passe oublié 🔑</h2>
+            <h2>Mot de passe oublié</h2>
             <p>Entrez votre e-mail pour retrouver votre compte</p>
           </div>
 

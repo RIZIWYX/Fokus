@@ -1,5 +1,5 @@
 /* ==========================================================
-   FOKUS — Agenda
+   FOKUS - Agenda
    Layout 4 colonnes : calendrier | tâches du jour |
                        deadlines proches | toutes les deadlines
    Hauteurs fixes, largeurs VERROUILLÉES contre les textes longs.
@@ -25,9 +25,9 @@
   align-items: start;
 }
 
-/* ══════════════════════════════════════════════════════════
+/* ==========================================================
    COLONNE 1 : CALENDRIER
-   ══════════════════════════════════════════════════════════ */
+   ========================================================== */
 .agenda-left {
   display: flex;
   flex-direction: column;
@@ -178,9 +178,9 @@
   border-radius: 50%;
 }
 
-/* ══════════════════════════════════════════════════════════
-   COLONNES 2, 3, 4 — Style unifié (.agenda-side-card)
-   ══════════════════════════════════════════════════════════ */
+/* ==========================================================
+   COLONNES 2, 3, 4 - Style unifié (.agenda-side-card)
+   ========================================================== */
 
 /* Positionnement des 3 colonnes */
 .agenda-day-col,
@@ -191,7 +191,7 @@
   min-width: 0;
 }
 
-/* ── Carte commune aux 3 colonnes ── */
+/* -- Carte commune aux 3 colonnes -- */
 .agenda-side-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -203,7 +203,7 @@
   min-width: 0;
 }
 
-/* ── Header commun ── */
+/* -- Header commun -- */
 .agenda-side-header {
   padding: 9px 12px;
   border-bottom: 1px solid var(--border);
@@ -234,7 +234,7 @@
   border-color: rgba(229, 57, 53, 0.3);
 }
 
-/* ── Liste scrollable commune ── */
+/* -- Liste scrollable commune -- */
 .agenda-side-list {
   padding: 8px;
   display: flex;
@@ -246,9 +246,9 @@
   min-width: 0;
 }
 
-/* ══════════════════════════════════════════════════════════
+/* ==========================================================
    Items de tâche (commun aux 3 colonnes)
-   ══════════════════════════════════════════════════════════ */
+   ========================================================== */
 
 .agenda-month-label {
   font-size: 0.65rem;
@@ -351,9 +351,9 @@
   color: var(--status-urgent);
 }
 
-/* ══════════════════════════════════════════════════════════
+/* ==========================================================
    RESPONSIVE
-   ══════════════════════════════════════════════════════════ */
+   ========================================================== */
 @media (max-width: 1400px) {
   .agenda-layout {
     grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);

@@ -65,7 +65,7 @@ generer_csrf_token();
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>FOKUS — Nouveau mot de passe</title>
+  <title>FOKUS - Nouveau mot de passe</title>
   <link rel="stylesheet" href="../../css/global.css">
   <link rel="stylesheet" href="../../css/login.css">
 </head>
@@ -83,7 +83,7 @@ generer_csrf_token();
     <main class="login-main">
       <div class="auth-form active">
         <div class="form-header">
-          <h2>Réinitialisation 🔑</h2>
+          <h2>Réinitialisation</h2>
           <p>Choisissez un nouveau mot de passe sécurisé</p>
         </div>
 

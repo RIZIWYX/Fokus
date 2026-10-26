@@ -50,7 +50,7 @@ if ($veut_changer_question) {
     if ($question === '' || $reponse === '') {
         rediriger_erreur('champs_vides');
     }
-    // QUESTION est un INT en BDD → valider_id
+    // QUESTION est un INT en BDD, donc valider_id
     $question = valider_id($question);
     $reponse  = valider_texte_obligatoire($reponse, 30);
 }
