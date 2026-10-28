@@ -64,7 +64,8 @@ fokus/
 │   ├── bdd.php        # Connexion PDO centralisée
 │   └── config.example.php # Modèle de configuration (identifiants)
 ├── docs/
-│   └── compte-rendu.pdf   # Compte rendu du projet
+│   ├── compte-rendu.pdf   # Compte rendu du projet
+│   └── securite-csrf.md   # Analyse d'une faille CSRF corrigée
 └── sql/
     └── script.sql     # Schéma et données initiales
 ```
@@ -135,7 +136,7 @@ La sécurité a été un fil rouge du projet. La bibliothèque `php/security.php
 
 ---
 
-> 📄 Détail d'une faille CSRF identifiée et corrigée : voir [SECURITE_CSRF.md](SECURITE_CSRF.md)
+> 📄 Détail d'une faille CSRF identifiée et corrigée : voir [docs/securite-csrf.md](docs/securite-csrf.md)
 
 ## 👥 Auteurs
 
