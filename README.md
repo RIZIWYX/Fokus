@@ -6,6 +6,8 @@
 ![MySQL](https://img.shields.io/badge/MySQL-PDO-4479A1)
 [![Licence MIT](https://img.shields.io/badge/licence-MIT-green)](LICENSE)
 
+![Démo : connexion, création d'une tâche et tour de l'application](docs/demo.gif)
+
 🌐 **Démo en ligne** : https://fokus-riziwyx.vercel.app/
 
 Application web full-stack de gestion de tâches, conçue pour aider les étudiants
