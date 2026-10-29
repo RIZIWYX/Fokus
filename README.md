@@ -1,6 +1,6 @@
 # 🎯 Fokus
 
-[![CI](https://github.com/RIZIWYX/fokus/actions/workflows/ci.yml/badge.svg)](https://github.com/RIZIWYX/fokus/actions/workflows/ci.yml)
+[![CI](https://github.com/RIZIWYX/Fokus/actions/workflows/ci.yml/badge.svg)](https://github.com/RIZIWYX/Fokus/actions/workflows/ci.yml)
 [![Démo](https://img.shields.io/badge/d%C3%A9mo-fokus--riziwyx.vercel.app-d4a017)](https://fokus-riziwyx.vercel.app/)
 ![PHP](https://img.shields.io/badge/PHP-8-777BB4)
 ![MySQL](https://img.shields.io/badge/MySQL-PDO-4479A1)
@@ -101,7 +101,7 @@ La sécurité a été un fil rouge du projet. La bibliothèque `php/security.php
 
 1. **Cloner le dépôt**
    ```bash
-   git clone https://github.com/RIZIWYX/fokus.git
+   git clone https://github.com/RIZIWYX/Fokus.git
    cd fokus
    ```
 
