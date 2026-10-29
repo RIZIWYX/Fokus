@@ -6,7 +6,7 @@
 ![Vercel](https://img.shields.io/badge/d%C3%A9ploy%C3%A9%20sur-Vercel-black)
 [![Licence MIT](https://img.shields.io/badge/licence-MIT-green)](LICENSE)
 
-![Démo : connexion, création d'une tâche et tour de l'application](https://github.com/RIZIWYX/fokus/raw/main/docs/demo.gif)
+![Démo : connexion, création d'une tâche et tour de l'application](https://github.com/RIZIWYX/Fokus/raw/main/docs/demo.gif)
 
 🌐 **Démo en ligne** : https://fokus-riziwyx.vercel.app/
 
@@ -16,7 +16,7 @@ Application web full-stack de gestion de tâches, conçue pour aider les étudia
 Projet réalisé en binôme dans le cadre du cours **Langages web** — Licence 2 Informatique, Université de Rouen Normandie.
 
 > **Branche `prod`** : c'est la version déployée sur Vercel, avec une base PostgreSQL hébergée chez Neon.
-> La version de développement (MySQL, installation locale) se trouve sur la branche [`main`](https://github.com/RIZIWYX/fokus/tree/main).
+> La version de développement (MySQL, installation locale) se trouve sur la branche [`main`](https://github.com/RIZIWYX/Fokus/tree/main).
 
 ---
 
