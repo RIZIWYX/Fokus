@@ -10,6 +10,8 @@
 
 🌐 **Démo en ligne** : https://fokus-riziwyx.vercel.app/
 
+> **Branches** : `main` est la version d'origine (PHP, MySQL), à lancer en local. La démo en ligne tourne sur la branche [`prod`](https://github.com/RIZIWYX/Fokus/tree/prod), adaptée à Vercel avec une base PostgreSQL hébergée chez Neon.
+
 Application web full-stack de gestion de tâches, conçue pour aider les étudiants
 à organiser leur travail, visualiser leurs échéances et garder le focus.
 
@@ -45,7 +47,7 @@ Aucun framework — tout est écrit à la main pour bien maîtriser les fondamen
 ## 📁 Structure du projet
 
 ```
-fokus/
+Fokus/
 ├── html/              # Pages utilisateur
 │   ├── dashboard.php
 │   ├── agenda.php
@@ -54,13 +56,17 @@ fokus/
 ├── php/               # Logique métier
 │   ├── security.php   # Bibliothèque centrale de sécurité
 │   ├── login/         # Authentification (login, register)
+│   ├── modals.php     # Fenêtres modales communes
 │   ├── add/           # Création de tâches
+│   ├── edit/          # Modification de tâches
 │   ├── delete/        # Suppression (tâches + compte)
 │   └── session/       # Données de session et statistiques
 ├── js/                # Scripts client
 │   ├── main.js        # Recherche, interactions
 │   ├── calendar.js    # Composant calendrier réutilisable
-│   └── edit.js        # Édition de tâches
+│   ├── edit.js        # Édition de tâches
+│   ├── delete.js      # Confirmation des suppressions
+│   └── errors.js / success.js  # Messages d'erreur et de réussite
 ├── css/               # Feuilles de style
 ├── BDD/
 │   ├── bdd.php        # Connexion PDO centralisée
@@ -69,7 +75,9 @@ fokus/
 │   ├── compte-rendu.pdf   # Compte rendu du projet
 │   └── securite-csrf.md   # Analyse d'une faille CSRF corrigée
 └── sql/
-    └── script.sql     # Schéma et données initiales
+    ├── script.sql     # Schéma et données initiales
+    ├── view.sql       # Requêtes de consultation
+    └── testeur.sql    # Compte de test
 ```
 
 ---
@@ -102,7 +110,7 @@ La sécurité a été un fil rouge du projet. La bibliothèque `php/security.php
 1. **Cloner le dépôt**
    ```bash
    git clone https://github.com/RIZIWYX/Fokus.git
-   cd fokus
+   cd Fokus
    ```
 
 2. **Créer la base de données**
@@ -142,7 +150,7 @@ La sécurité a été un fil rouge du projet. La bibliothèque `php/security.php
 
 ## 👥 Auteurs
 
-Projet réalisé par **Rayane Graïne** et son binôme — L2 Informatique, Université de Rouen Normandie, 2025-2026.
+Projet réalisé par **Rayane Graïne** et **Accyl Benadjaoud** — L2 Informatique, Université de Rouen Normandie, 2025-2026.
 
 ---
 
